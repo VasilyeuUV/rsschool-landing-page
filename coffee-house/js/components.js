@@ -9,14 +9,15 @@ async function loadComponents() {
     for (const component of components) {
         await loadComponent(component);
     }
+
+    initializeModules();
 }
 
 
 /**
- * Загрузить конкретный компонент и определить его тип.
- * 
- * @param {string} element - Найденный компонент
- * @returns 
+ * Загрузка конкретного компонента и определение его типа.
+ *
+ * @param {HTMLElement} element - Найденный компонент.
  */
 async function loadComponent(element) {
     const url = element.dataset.component;
@@ -45,10 +46,10 @@ async function loadComponent(element) {
 
 
 /**
- * Вставить компонент в блок <head> c <title>
- * 
- * @param {string} head - Блок <head> для вставки компонента.
- * @param {string} html - вставляемый код. 
+ * Вставка компонента в блок <head> с установкой <title>.
+ *
+ * @param {HTMLHeadElement} head - Блок <head>.
+ * @param {string} html - Вставляемый код.
  */
 function loadHead(head, html) {
     head.innerHTML = html;
@@ -63,14 +64,22 @@ function loadHead(head, html) {
 
 
 /**
- * Вставить компонент в блок <body> с заменой.
- * 
- * @param {string} element - элемент компонента.
- * @param {string} html - вставляемый код компонента.
+ * Вставка компонента в <body> с заменой элемента-загрузчика.
+ *
+ * @param {HTMLElement} element - Элемент-загрузчик компонента.
+ * @param {string} html - Вставляемый код компонента.
  */
 function replaceComponent(element, html) {
     const template = document.createElement('template');
     template.innerHTML = html.trim();
 
     element.replaceWith(template.content);
+}
+
+
+/**
+ * Инициализация функциональных модулей.
+ */
+function initializeModules() {
+    initSliders();
 }

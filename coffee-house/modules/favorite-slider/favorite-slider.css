@@ -1,0 +1,11 @@
+.favorite__slider--viewport {
+    overflow: hidden;
+}
+
+.favorite__slider--track {
+    display: flex;
+}
+
+.favorite__slider--slide {
+    flex: 0 0 100%;
+}
