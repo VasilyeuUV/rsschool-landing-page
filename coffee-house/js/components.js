@@ -133,6 +133,7 @@ function loadScript(url) {
     return new Promise((resolve, reject) => {
         const script = document.createElement('script');
 
+        script.type = 'module';
         script.src = url;
 
         script.addEventListener('load', resolve);
