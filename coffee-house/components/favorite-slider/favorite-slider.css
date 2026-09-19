@@ -1,0 +1,206 @@
+/* =========================================================
+   FAVORITE
+   ========================================================= */
+
+.favorite {
+    margin-bottom: 140px;
+}
+
+.favorite__title {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+
+/* =========================================================
+   SLIDER
+   ========================================================= */
+
+.favorite__slider {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.favorite__slider--viewport {
+    width: 100%;
+    overflow: hidden;
+}
+
+.favorite__slider--track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.favorite__slider--slide {
+    display: flex;
+    flex: 0 0 100%;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+}
+
+.favorite__slider--image {
+    width: 480px;
+    max-width: 100%;
+    margin-bottom: 15px;
+}
+
+.favorite__slider--content {
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+}
+
+.favorite__slider--content-name {
+    margin-bottom: 16px;
+}
+
+.favorite__slider--content-description {
+    margin-bottom: 16px;
+}
+
+.favorite__slider--content-price {
+    margin: 0;
+}
+
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.favorite__slider--button {
+    flex: 0 0 60px;
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    border: 1px solid var(--border-color-dark);
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    transition:
+        background-color 0.3s,
+        border-color 0.3s;
+}
+
+.favorite__slider--button:hover:not(:disabled) {
+    border-color: var(--background-color-container);
+    background-color: var(--background-color-container);
+}
+
+.button__prev {
+    background: url('../../assets/icons/arrows/arrow-left.svg') no-repeat center center;
+}
+
+.button__next {
+    background: url('../../assets/icons/arrows/arrow-right.svg') no-repeat center center;
+}
+
+.button__prev:hover:not(:disabled) {
+    background: url('../../assets/icons/arrows/arrow-left-light.svg') no-repeat center center;
+    background-color: var(--background-color-container);
+}
+
+.button__next:hover:not(:disabled) {
+    background: url('../../assets/icons/arrows/arrow-right-light.svg') no-repeat center center;
+    background-color: var(--background-color-container);
+}
+
+.favorite__slider--button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+
+.favorite__slider--pagination {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 36px;
+}
+
+.favorite__slider--dot {
+    width: 40px;
+    height: 6px;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    background-color: var(--color-dark);
+    opacity: 0.5;
+    cursor: pointer;
+    transition:
+        opacity 0.4s,
+        transform 0.4s;
+}
+
+.favorite__slider--dot:hover,
+.favorite__slider--dot-active {
+    opacity: 1;
+}
+
+.favorite__slider--dot:hover {
+    transform: scale(1.1);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.favorite__empty {
+    display: flex;
+    flex: 0 0 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    text-align: center;
+}
+
+.favorite__empty--logo {
+    max-width: 200px;
+    margin-bottom: 24px;
+}
+
+.favorite__empty--message {
+    color: var(--text-color-secondary);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .favorite__slider--button {
+        flex-basis: 50px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .favorite__slider--image {
+        width: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .favorite__slider {
+        gap: 8px;
+    }
+
+    .favorite__slider--button {
+        flex-basis: 40px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .favorite__slider--image {
+        width: 300px;
+    }
+}

@@ -4,14 +4,14 @@
 <head data-component="./components/head.html" data-page-title="Coffee House. Menu"></head>
 
 <body>
-    <div data-component="./components/header.html"></div>
+    <header data-component="./components/header/header.html" data-style="./components/header/header.css"></header>
 
     <main class="main">
-        <div data-component="./modules/catalog/catalog.html" data-style="./modules/catalog/catalog.css"
-            data-script="./modules/catalog/catalog.js"></div>
+        <section data-component="./components/catalog/catalog.html" data-style="./components/catalog/catalog.css"
+            data-script="./components/catalog/catalog.js"></section>
     </main>
 
-    <div data-component="./components/footer.html"></div>
+    <footer data-component="./components/footer/footer.html" data-style="./components/footer/footer.css"> </footer>
 
     <script src="./js/components.js"></script>
 </body>

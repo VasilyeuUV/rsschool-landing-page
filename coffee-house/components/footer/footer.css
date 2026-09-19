@@ -1,0 +1,50 @@
+.footer__content {
+    display: flex;
+    flex-wrap: wrap;
+    height: 450px;
+    margin-bottom: 40px;
+    padding: 80px 100px;
+    border-radius: 40px;
+    background-color: var(--background-color-container);
+}
+
+.footer__content-left {
+    max-width: 530px;
+    margin-right: 100px;
+}
+
+.footer__title {
+    margin-bottom: 40px;
+}
+
+.footer__link {
+    display: block;
+    margin-bottom: 16px;
+    padding-left: 28px;
+    font: var(--font-link);
+    text-decoration: none;
+}
+
+.footer__social-btn {
+    margin-right: 7px;
+    border: 1px solid var(--border-color-light);
+}
+
+.footer__contact-title {
+    margin: 54px 0 38px;
+}
+
+.footer__contact-adress {
+    margin-bottom: 20px;
+
+    background: url('../../assets/icons/contacts/pin-alt.svg') no-repeat left center;
+}
+
+.footer__contact-phone {
+    margin-bottom: 20px;
+    background: url('../../assets/icons/contacts/phone.svg') no-repeat left center;
+}
+
+.footer__contact-clock {
+    background: url('../../assets/icons/contacts/clock.svg') no-repeat left center;
+}

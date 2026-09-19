@@ -1,0 +1,82 @@
+.about {
+    width: 100%;
+    height: 1325px;
+    margin-bottom: 0;
+}
+
+.wrapper__about {
+    width: 100%;
+    max-width: 1360px;
+    height: 1325px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.about__text {
+    width: 100%;
+    height: 225px;
+    flex: 0 0 225px;
+}
+
+.about__title {
+    width: 100%;
+    max-width: 1360px;
+    height: 225px;
+    margin: 0;
+    font: var(--font-heading-2);
+    color: var(--text-color-primary);
+    text-align: left;
+}
+
+.title__accent {
+    font: 600 60px/125% var(--font-family);
+    font-style: italic;
+    color: var(--text-color-accent);
+}
+
+.about__cards {
+    width: 100%;
+    max-width: 1360px;
+    height: 1060px;
+    display: grid;
+    grid-template-columns: repeat(2, 660px);
+    gap: 40px;
+}
+
+.about__column {
+    width: 660px;
+    height: 1060px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.about__card {
+    width: 660px;
+    flex: 0 0 auto;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.about__card--large {
+    height: 590px;
+}
+
+.about__card--small {
+    height: 430px;
+}
+
+.about__card-pic {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 0.5s ease;
+}
+
+.about__card:hover .about__card-pic {
+    transform: scale(1.05);
+}

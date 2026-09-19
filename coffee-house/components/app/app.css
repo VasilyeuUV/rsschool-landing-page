@@ -1,0 +1,35 @@
+.download {
+    margin-bottom: 105px;
+}
+
+.download__content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.download__content-right {
+    text-align: right;
+}
+
+.download__title {
+    max-width: 630px;
+}
+
+.download__lead {
+    max-width: 630px;
+    margin-bottom: 40px;
+    font: var(--font-body-medium);
+}
+
+.download__btn {
+    margin-right: 20px;
+    padding-left: 64px;
+    border: 1px solid var(--border-color-dark);
+    text-align: left;
+}
+
+.download__btn-text {
+    margin-top: -5px;
+}

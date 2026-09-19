@@ -1,0 +1,31 @@
+.header__content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 0;
+    margin-bottom: -5px;
+}
+
+.header__logo {
+    margin-top: 10px;
+}
+
+.header__list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.header__item {
+    margin-right: 40px;
+}
+
+.header__burger-link {
+    display: inline-block;
+
+    padding-right: 28px;
+
+    background:
+        url('../../assets/icons/coffee-cup.svg') no-repeat right top;
+}

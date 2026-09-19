@@ -4,23 +4,19 @@
 <head data-component="./components/head.html" data-page-title="Coffee House"></head>
 
 <body>
-    <div data-component="./components/header.html"></div>
+    <header data-component="./components/header/header.html" data-style="./components/header/header.css"></header>
 
     <main class="main">
-        <div data-component="./components/hero/hero.html"></div>
-
-        <div data-component="./modules/favorite-slider/favorite-slider.html"
-            data-style="./modules/favorite-slider/favorite-slider.css"
-            data-script="./modules/favorite-slider/favorite-slider.js"></div>
-
-        <div data-component="./components/about/about.html"></div>
-
-        <div data-component="./components/app/app.html"></div>
+        <section data-component="./components/hero/hero.html" data-style="./components/hero/hero.css"></section>
+        <section data-component="./components/favorite-slider/favorite-slider.html"
+            data-style="./components/favorite-slider/favorite-slider.css"
+            data-script="./components/favorite-slider/favorite-slider.js"></section>
+        <section data-component="./components/about/about.html" data-style="./components/about/about.css"></section>
+        <section data-component="./components/app/app.html" data-style="./components/app/app.css"></section>
     </main>
 
-    <div data-component="./components/footer.html"></div>
+    <footer data-component="./components/footer/footer.html" data-style="./components/footer/footer.css"> </footer>
 
-    <script src="./modules/favorite-slider/favorite-slider.js"></script>
     <script src="./js/components.js"></script>
 </body>
 
