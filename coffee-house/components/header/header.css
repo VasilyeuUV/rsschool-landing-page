@@ -3,9 +3,8 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-
-    padding: 20px 0;
-    margin-bottom: -5px;
+    padding: 10px 0;
+    margin-bottom: 10px;
 }
 
 .header__logo {
@@ -15,6 +14,8 @@
 .header__list {
     display: flex;
     flex-wrap: wrap;
+    margin-left: 93px;
+    margin-top: 8px;
 }
 
 .header__item {
@@ -23,9 +24,7 @@
 
 .header__burger-link {
     display: inline-block;
-
-    padding-right: 28px;
-
-    background:
-        url('../../assets/icons/coffee-cup.svg') no-repeat right top;
+    padding-right: 29px;
+    margin-top: 6px;
+    background: url('../../assets/icons/coffee-cup.svg') no-repeat right top;
 }

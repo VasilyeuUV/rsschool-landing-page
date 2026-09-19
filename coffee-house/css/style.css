@@ -16,10 +16,8 @@ html {
 body {
     min-width: 320px;
     min-height: 100vh;
-
     font: var(--font-body-medium);
     color: var(--text-color-primary);
-
     background-color: var(--background-color-body);
 }
 
@@ -57,14 +55,12 @@ h1 {
 
 h2 {
     margin-bottom: 40px;
-
     font: var(--font-heading-2);
     text-align: left;
 }
 
 h3 {
     margin-bottom: 0;
-
     font: var(--font-heading-3);
 }
 
@@ -104,7 +100,6 @@ ul,
 ol {
     margin: 0;
     padding: 0;
-
     list-style: none;
 }
 
@@ -136,7 +131,6 @@ ol {
 
 .interactive__link {
     position: relative;
-
     transition: 0.2s;
 }
 
@@ -144,17 +138,12 @@ ol {
     position: absolute;
     right: 0;
     bottom: -5px;
-
     width: 100%;
     height: 2px;
-
     content: "";
-
     background-color: var(--text-color-primary);
-
     transform: scale(0, 1);
     transform-origin: right top;
-
     transition:
         transform 0.4s,
         transform-origin 0s 0.25s;
@@ -176,18 +165,13 @@ ol {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     box-sizing: border-box;
-
     padding: 20px 0;
-
     border: 0;
     border-radius: 100px;
-
     font: var(--font-button);
     text-align: center;
     text-decoration: none;
-
     cursor: pointer;
 }
 
@@ -221,7 +205,9 @@ ol {
    ========================================================= */
 
 .transition {
-    transition: 2s;
+    transition-property: background-color, color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
 }
 
 
@@ -231,67 +217,52 @@ ol {
 
 .twitter,
 .twitter:not(:hover) {
-    background:
-        url('../assets/icons/social/twitter.svg') no-repeat center center;
+    background: url('../assets/icons/social/twitter.svg') no-repeat center center;
 }
 
 .twitter:hover {
-    background:
-        url('../assets/icons/social/twitter-dark.svg') no-repeat center center;
-
+    background: url('../assets/icons/social/twitter-dark.svg') no-repeat center center;
     background-color: var(--background-color-body);
 }
 
 .instagramm,
 .instagramm:not(:hover) {
-    background:
-        url('../assets/icons/social/instagram.svg') no-repeat center center;
+    background: url('../assets/icons/social/instagram.svg') no-repeat center center;
 }
 
 .instagramm:hover {
-    background:
-        url('../assets/icons/social/instagram-dark.svg') no-repeat center center;
-
+    background: url('../assets/icons/social/instagram-dark.svg') no-repeat center center;
     background-color: var(--background-color-body);
 }
 
 .facebook,
 .facebook:not(:hover) {
-    background:
-        url('../assets/icons/social/facebook.svg') no-repeat center center;
+    background: url('../assets/icons/social/facebook.svg') no-repeat center center;
 }
 
 .facebook:hover {
-    background:
-        url('../assets/icons/social/facebook-dark.svg') no-repeat center center;
-
+    background: url('../assets/icons/social/facebook-dark.svg') no-repeat center center;
     background-color: var(--background-color-body);
 }
 
 .appstore,
 .appstore:not(:hover) {
-    background:
-        url('../assets/icons/store/appstore-icon.svg') no-repeat 20px center;
+    background: url('../assets/icons/store/appstore-icon.svg') no-repeat 20px center;
 }
 
 .appstore:hover {
-    background:
-        url('../assets/icons/store/appstore-light-icon.svg') no-repeat 20px center;
-
+    background: url('../assets/icons/store/appstore-light-icon.svg') no-repeat 20px center;
     background-color: var(--background-color-container);
     color: var(--text-color-inverse);
 }
 
 .googleplay,
 .googleplay:not(:hover) {
-    background:
-        url('../assets/icons/store/googleplay-icon.svg') no-repeat 20px center;
+    background: url('../assets/icons/store/googleplay-icon.svg') no-repeat 20px center;
 }
 
 .googleplay:hover {
-    background:
-        url('../assets/icons/store/googleplay-icon-light.svg') no-repeat 20px center;
-
+    background: url('../assets/icons/store/googleplay-icon-light.svg') no-repeat 20px center;
     background-color: var(--background-color-container);
     color: var(--text-color-inverse);
 }
@@ -305,4 +276,21 @@ ol {
     .wrapper {
         padding: 0 16px;
     }
+}
+
+
+
+/* Временный слой для сверки макета */
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1440px;
+    height: 4388px;
+    background: url('../assets/img/_design/[D]\ Home.png') no-repeat center top;
+    opacity: 0.3;
+    z-index: 9999;
+    pointer-events: none;
 }

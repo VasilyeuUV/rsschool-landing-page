@@ -25,11 +25,12 @@
 
 .download__btn {
     margin-right: 20px;
-    padding-left: 64px;
+    padding-left: 44px;
     border: 1px solid var(--border-color-dark);
     text-align: left;
 }
 
 .download__btn-text {
     margin-top: -5px;
+    width: 110px;
 }
