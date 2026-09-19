@@ -154,6 +154,8 @@ function initSlider(slider) {
      * @returns {HTMLElement} - Слайд.
      */
     function moveToSlide(index) {
+        return;
+
         if (isAnimating) {
             return;
         }
