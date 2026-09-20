@@ -17,9 +17,8 @@
 
 /* Оболочка переключателя */
 .theme-switcher__wrapper {
-    margin-left: auto;
-    margin-right: 40px;
-    margin-top: 6px;
+    margin-right: 20px;
+    margin-top: 10px;
 }
 
 /* Скрываем дефолтный чекбокс */
@@ -79,8 +78,8 @@
 .theme-switcher__icon--sun::after,
 .theme-switcher__icon--moon::after {
     content: '';
-    width: 60%;
-    height: 60%;
+    width: 50%;
+    height: 50%;
     display: block;
     background-color: var(--color-icon-dark);
     -webkit-mask-repeat: no-repeat;

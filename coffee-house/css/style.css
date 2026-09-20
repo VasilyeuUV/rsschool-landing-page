@@ -281,7 +281,7 @@ ol {
 
 
 /* Временный слой для сверки макета */
-/* body::after {
+body::after {
     content: "";
     position: absolute;
     top: 0;
@@ -293,4 +293,4 @@ ol {
     opacity: 0.3;
     z-index: 9999;
     pointer-events: none;
-} */
+}
