@@ -14,11 +14,13 @@ html {
 }
 
 body {
-    min-width: 320px;
+    max-width: var(--screen-width-desktop, 1440px);
+    min-width: var(--screen-width-mobile, 380px);
     min-height: 100vh;
     font: var(--font-body-medium);
     color: var(--text-color-primary);
     background-color: var(--background-color-body);
+    margin: 0 auto;
 }
 
 img {
@@ -95,6 +97,7 @@ h3 {
     text-align: center;
 }
 
+/* Скрываем элемент из отображенния, но он продолжает работать */
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -107,6 +110,7 @@ h3 {
     clip: rect(0 0 0 0);
     overflow: hidden;
 }
+
 
 
 /* =========================================================
@@ -297,8 +301,17 @@ ol {
 
 
 
+
+
+
+
+
+
+
+
+
 /* Временный слой для сверки макета Главной страницы */
-/* body::after {
+body::after {
     content: "";
     position: absolute;
     top: 0;
@@ -310,7 +323,7 @@ ol {
     opacity: 0.3;
     z-index: 9999;
     pointer-events: none;
-} */
+}
 
 /* Временный слой для сверки макета Страницы меню */
 /* body::after {

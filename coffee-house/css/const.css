@@ -63,6 +63,23 @@
     --font-link: 600 16px/150% var(--font-family);
     --font-burger-link: 600 32px/125% var(--font-family);
     --font-button: var(--font-link);
+
+
+    /* SCREEN BREAKPOINTS */
+    --screen-width-desktop: 1440px;
+    --screen-width-laptop: 1024px;
+    --screen-width-tablet: 768px;
+    --screen-width-mobile-large: 480px;
+    --screen-width-mobile: 380px;
+    /* ==========================================================================
+    КОНСТАНТЫ ЭКРАНОВ (BREAKPOINTS)
+    ==========================================================================
+    DESKTOP (Large)   : 1440px  -> Стандартные мониторы / Ноутбуки
+    LAPTOP            : 1024px  -> Нетбуки / Большие планшеты (iPad Pro)
+    TABLET            : 768px   -> Стандартные планшеты (Портретная ориентация)
+    MOBILE (Large)    : 480px   -> Большие смартфоны
+    MOBILE (Small)    : 380px   -> Минимальная базовая ширина современных телефонов
+    ========================================================================== */
 }
 
 
