@@ -21,17 +21,17 @@ function createProductCard(product) {
         </div>
 
         <div class="catalog__card--content">
-            <h2 class="catalog__card--title">
+            <h3 class="catalog__card--title">
                 ${product.name}
-            </h2>
+            </h3>
 
             <p class="catalog__card--description">
                 ${product.description}
             </p>
 
-            <p class="catalog__card--price">
+            <h3 class="catalog__card--price">
                 ${product.price}
-            </p>
+            </h3>
         </div>
     `;
 
