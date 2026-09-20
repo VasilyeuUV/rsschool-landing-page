@@ -1,5 +1,5 @@
 .download {
-    margin-bottom: 105px;
+    margin-bottom: 100px;
 }
 
 .download__content {
@@ -23,14 +23,21 @@
     font: var(--font-body-medium);
 }
 
+.download__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start
+}
+
 .download__btn {
     margin-right: 20px;
-    padding-left: 44px;
+    padding-left: 40px;
     border: 1px solid var(--border-color-dark);
     text-align: left;
 }
 
 .download__btn-text {
-    margin-top: -5px;
+    margin-top: -8px;
     width: 110px;
 }

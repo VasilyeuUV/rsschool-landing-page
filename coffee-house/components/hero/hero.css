@@ -31,6 +31,7 @@
     transition-property: padding-right;
     transition-duration: 1s;
     transition-timing-function: ease;
+    margin: 1px -1px;
 }
 
 .hero__btn-menu:hover {
