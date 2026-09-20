@@ -95,6 +95,19 @@ h3 {
     text-align: center;
 }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
 
 /* =========================================================
    LISTS
@@ -284,8 +297,8 @@ ol {
 
 
 
-/* Временный слой для сверки макета */
-body::after {
+/* Временный слой для сверки макета Главной страницы */
+/* body::after {
     content: "";
     position: absolute;
     top: 0;
@@ -297,4 +310,19 @@ body::after {
     opacity: 0.3;
     z-index: 9999;
     pointer-events: none;
-}
+} */
+
+/* Временный слой для сверки макета Страницы меню */
+/* body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1440px;
+    height: 4388px;
+    background: url('../assets/img/_design/[D]\ Menu\ _\ Coffee.png') no-repeat center top;
+    opacity: 0.3;
+    z-index: 9999;
+    pointer-events: none;
+} */

@@ -1,0 +1,198 @@
+/* Оболочка каталога */
+.wrapper__catalog {
+    width: 100%;
+}
+
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+/* Блок заголовка */
+.catalog__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Заголовок */
+.catalog__title {
+    max-width: 800px;
+    text-align: center;
+    z-index: 1;
+}
+
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+
+.catalog__btn-category {
+    height: 46px;
+    width: auto;
+    border: 1px solid var(--border-color-dark);
+    text-align: right;
+    padding: 0 16px 0 0;
+    margin-right: 16px;
+    display: inline-flex;
+
+    /* transition: all 0.4s ease; */
+
+    /* 
+    
+    border-radius: 100px;
+    color: var(--text-color-primary);
+    background-color: transparent;
+    cursor: pointer; */
+
+    transition:
+        background-color 0.4s,
+        color 0.4s;
+}
+
+/* Действия над кнопками */
+.catalog__btn-category:hover,
+.catalog__btn-category:focus-visible,
+.catalog__btn-category-active {
+    color: var(--text-color-inverse);
+    background-color: var(--background-color-container);
+}
+
+/* Блок иконки кнопок */
+.catalog__category-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin: 8px;
+    border-radius: 50%;
+    background-color: var(--border-color-light);
+    overflow: hidden;
+}
+
+.catalog__btn-category:hover .catalog__category-icon,
+.catalog__btn-category:focus-visible .catalog__category-icon,
+.catalog__btn-category-active .catalog__category-icon {
+    background-color: var(--text-color-inverse);
+}
+
+/* Изображение иконки */
+.catalog__category-icon img {
+    width: 55%;
+    height: 55%;
+    object-fit: contain;
+}
+
+
+
+/* =========================================================
+   PRODUCTS
+   ========================================================= */
+
+/* Блок каталога продуктов */
+.catalog__products {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 40px;
+}
+
+
+
+/* =========================================================
+   PRODUCT CARD
+   ========================================================= */
+
+/* Карточка каталога */
+.catalog__card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    border: 1px solid var(--border-color-light);
+    border-radius: 40px;
+    overflow: hidden;
+    transition:
+        transform 0.3s,
+        border-width 0.3s;
+}
+
+.catalog__card:hover {
+    border-width: 3px;
+    transform: scale(1.02);
+}
+
+.catalog__card--image {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+/* Изображение товара */
+.catalog__card--pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Блок контента товара */
+.catalog__card--content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Название товара */
+.catalog__card--title {
+    margin-bottom: 12px;
+}
+
+/* Описание товара */
+.catalog__card--description {
+    flex-grow: 1;
+    margin-bottom: 12px;
+}
+
+/* Цена товара */
+.catalog__card--price {
+    margin: 0;
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+    .catalog__products {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .catalog__products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .catalog__category {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .catalog__products {
+        grid-template-columns: 1fr;
+    }
+
+    .catalog__categories {
+        justify-content: flex-start;
+    }
+
+    .catalog__category {
+        margin-right: 8px;
+    }
+}
