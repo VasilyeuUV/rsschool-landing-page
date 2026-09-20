@@ -53,6 +53,10 @@ h1 {
     font: var(--font-heading-1);
 }
 
+h1 span {
+    font: var(--font-heading-1);
+}
+
 h2 {
     margin-bottom: 40px;
     font: var(--font-heading-2);
