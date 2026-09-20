@@ -9,6 +9,8 @@ async function loadComponents() {
     for (const component of components) {
         await loadComponent(component);
     }
+
+    scrollToInitialHash();
 }
 
 
@@ -42,19 +44,6 @@ async function loadNestedComponents(component) {
     } catch (error) {
         console.error(`Failed to load nested component/module:`, error);
     }
-
-    // try {
-    //     const nestedComponents = component.querySelectorAll('[data-component]');
-
-    //     for (const nestedComponent of nestedComponents) {
-    //         await loadComponent(nestedComponent);
-    //     }
-    // } catch (error) {
-    //     console.error(
-    //         `Failed to load nested component/module:`,
-    //         error
-    //     );
-    // }
 }
 
 
@@ -136,13 +125,6 @@ function replaceComponent(element, html) {
     const template = document.createElement('template');
     template.innerHTML = html.trim();
 
-    // const component = template.content.firstElementChild;
-    // if (!component) {
-    //     throw new Error(
-    //         `Component is empty: ${element.dataset.component}`
-    //     );
-    // }
-
     const newElements = Array.from(template.content.children);
 
     element.replaceWith(template.content);
@@ -202,4 +184,25 @@ function loadScript(url) {
 
         document.body.append(script);
     });
+}
+
+
+/**
+ * Проверить хэш в адресной строке и плавно скроллить к нужной секции.
+ */
+function scrollToInitialHash() {
+    const hash = window.location.hash; // Получаем, например, "#mobile-app"
+    
+    if (hash) {
+        const targetElement = document.querySelector(hash);
+        
+        if (targetElement) {
+            setTimeout(() => {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 50);
+        }
+    }
 }
