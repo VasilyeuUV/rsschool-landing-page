@@ -52,6 +52,7 @@
     width: 100%;
     max-width: 480px;
     text-align: center;
+    padding: 5px;
 }
 
 .favorite__slider--content-name {
@@ -75,7 +76,7 @@
     flex: 0 0 60px;
     width: 60px;
     height: 60px;
-    margin: 0;
+    margin: -5px 0 0 4px;
     border: 1px solid var(--border-color-dark);
     border-radius: 50%;
     background-color: transparent;
@@ -96,6 +97,7 @@
 
 .button__next {
     background: url('../../assets/icons/arrows/arrow-right.svg') no-repeat center center;
+    margin: -5px 4px 0 0;
 }
 
 .button__prev:hover:not(:disabled) {

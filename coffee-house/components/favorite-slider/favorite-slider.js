@@ -33,9 +33,9 @@ function createSlide(product) {
                 ${product.description}
             </p>
 
-            <p class="favorite__slider--content-price">
+            <h3 class="favorite__slider--content-price">
                 ${product.price}
-            </p>
+            </h3>
 
         </div>
     `;
