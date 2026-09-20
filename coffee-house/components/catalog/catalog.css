@@ -180,7 +180,7 @@
         gap: 20px;
     }
 
-    .catalog__category {
+    .catalog__btn-category {
         margin-bottom: 10px;
     }
 }
@@ -194,7 +194,7 @@
         justify-content: flex-start;
     }
 
-    .catalog__category {
+    .catalog__btn-category {
         margin-right: 8px;
     }
 }

@@ -78,9 +78,7 @@ function getProductsByCategory(category) {
  * Инициализировать каталог.
  */
 function initCatalog() {
-    const buttons = document.querySelectorAll(
-        '.catalog__category'
-    );
+    const buttons = document.querySelectorAll('.catalog__btn-category');
 
     buttons.forEach(button => {
         button.addEventListener('click', () => {
@@ -92,7 +90,7 @@ function initCatalog() {
 
             buttons.forEach(item => {
                 item.classList.toggle(
-                    'catalog__category-active',
+                    'catalog__btn-category-active',
                     item === button
                 );
             });
