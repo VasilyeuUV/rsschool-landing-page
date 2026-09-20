@@ -3,7 +3,7 @@
     flex-wrap: wrap;
     height: 450px;
     margin-bottom: 40px;
-    padding: 80px 100px;
+    padding: 100px;
     border-radius: 40px;
     background-color: var(--background-color-container);
 }
@@ -31,7 +31,7 @@
 }
 
 .footer__contact-title {
-    margin: 54px 0 38px;
+    margin: 33px 0 38px;
 }
 
 .footer__contact-adress {
