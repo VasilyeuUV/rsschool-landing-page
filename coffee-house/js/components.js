@@ -13,6 +13,52 @@ async function loadComponents() {
 
 
 /**
+ * Загрузить вложенные компоненты компонента.
+ *
+ * @param {HTMLElement} component - Загруженный компонент.
+ */
+async function loadNestedComponents(component) {
+    if (!component)
+        return;
+
+    try {
+
+        const elementsToCheck = Array.isArray(component)
+            ? component
+            : [component];
+        const nestedComponents = [];
+
+        for (const el of elementsToCheck) {
+            if (el.hasAttribute('data-component')) {
+                nestedComponents.push(el);
+            }
+
+            nestedComponents.push(...el.querySelectorAll('[data-component]'));
+        }
+
+        for (const nestedComponent of nestedComponents) {
+            await loadComponent(nestedComponent);
+        }
+    } catch (error) {
+        console.error(`Failed to load nested component/module:`, error);
+    }
+
+    // try {
+    //     const nestedComponents = component.querySelectorAll('[data-component]');
+
+    //     for (const nestedComponent of nestedComponents) {
+    //         await loadComponent(nestedComponent);
+    //     }
+    // } catch (error) {
+    //     console.error(
+    //         `Failed to load nested component/module:`,
+    //         error
+    //     );
+    // }
+}
+
+
+/**
  * Загрузить HTML-компонент или модуль, и связанные с ним CSS и JavaScript.
  *
  * @param {HTMLElement} element - Элемент-загрузчик компонента.
@@ -25,12 +71,15 @@ async function loadComponent(element) {
 
         if (element.tagName === 'HEAD') {
             loadHead(element, html);
-        } else {
-            replaceComponent(element, html);
+            return;
         }
+
+        const component = replaceComponent(element, html);
 
         await loadStyle(element.dataset.style);
         await loadScript(element.dataset.script);
+        await loadNestedComponents(component);
+
     } catch (error) {
         console.error(
             `Failed to load component/module: ${componentUrl}`,
@@ -85,10 +134,20 @@ function loadHead(head, html) {
  */
 function replaceComponent(element, html) {
     const template = document.createElement('template');
-
     template.innerHTML = html.trim();
 
+    // const component = template.content.firstElementChild;
+    // if (!component) {
+    //     throw new Error(
+    //         `Component is empty: ${element.dataset.component}`
+    //     );
+    // }
+
+    const newElements = Array.from(template.content.children);
+
     element.replaceWith(template.content);
+
+    return newElements;
 }
 
 

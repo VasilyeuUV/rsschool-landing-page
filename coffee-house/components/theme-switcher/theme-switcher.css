@@ -1,0 +1,195 @@
+:root {
+    --switcher-width: 88px;
+    --switcher-height: 44px;
+    --switcher-padding: 4px;
+    --slider-size: calc(var(--switcher-height) - (var(--switcher-padding) * 2));
+
+    --color-border: var(--color-border-light, #C1B6AD);
+    --color-icon-light: var(--text-color-inverse, #E1D4C9);
+    --color-icon-dark: var(--text-color-primary, #403F3D);
+    --color-slider-switcher: var(--color-accent, #B0907A);
+    --color-slider-hover: var(--dark-border-primary, #665F55);
+}
+
+/* =========================================================
+   БАЗОВЫЕ СТИЛИ
+   ========================================================= */
+
+/* Оболочка переключателя */
+.theme-switcher__wrapper {
+    margin-left: auto;
+    margin-right: 40px;
+    margin-top: 6px;
+}
+
+/* Скрываем дефолтный чекбокс */
+.theme-switcher__checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Оболочка-капсула */
+.theme-switcher__label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: var(--switcher-width);
+    height: var(--switcher-height);
+    padding: 0 var(--switcher-padding);
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: calc(var(--switcher-height) / 2);
+    cursor: pointer;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+/* Общие стили для контейнеров иконок */
+.theme-switcher__icon--sun,
+.theme-switcher__icon--moon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: var(--slider-size);
+    height: var(--slider-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+/* Позиционируем контейнеры по бокам */
+.theme-switcher__icon--sun {
+    left: var(--switcher-padding);
+}
+
+.theme-switcher__icon--moon {
+    right: var(--switcher-padding);
+}
+
+/* Использование картинок как CSS-масок для перекрашивания */
+.theme-switcher__icon--sun::after,
+.theme-switcher__icon--moon::after {
+    content: '';
+    width: 60%;
+    height: 60%;
+    display: block;
+    background-color: var(--color-icon-dark);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    transition: background-color 0.3s ease;
+}
+
+/* Пути к изображениям в масках */
+.theme-switcher__icon--sun::after {
+    -webkit-mask-image: url('../../assets/icons/theme/Sun.svg');
+    mask-image: url('../../assets/icons/theme/Sun.svg');
+}
+
+.theme-switcher__icon--moon::after {
+    -webkit-mask-image: url('../../assets/icons/theme/Moon.svg');
+    mask-image: url('../../assets/icons/theme/Moon.svg');
+}
+
+/* Главный движущийся ползунок */
+.theme-switcher__slider {
+    position: absolute;
+    top: var(--switcher-padding);
+    left: var(--switcher-padding);
+    width: var(--slider-size);
+    height: var(--slider-size);
+    background-color: var(--color-slider-switcher);
+    border-radius: 50%;
+    z-index: 1;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================================================
+   ХОВЕР-КРУГИ
+   ========================================================= */
+
+/* Скрытые подложки под иконками для эффекта наведения */
+.theme-switcher__icon--sun::before,
+.theme-switcher__icon--moon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: var(--slider-size);
+    height: var(--slider-size);
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--color-slider-hover);
+    transition: transform 0.25s ease;
+}
+
+
+/* ==========================================================================
+   ЛОГИКА СОСТОЯНИЙ И ЗЕРКАЛЬНЫЙ ХОВЕР
+   ========================================================================== */
+
+/* --- СОСТОЯНИЕ 1: Выбрано СОЛНЦЕ (Чекбокс НЕ активен) --- */
+
+/* Солнце на ползунке -> светлое */
+.theme-switcher__checkbox:not(:checked)+.theme-switcher__label .theme-switcher__icon--sun::after {
+    background-color: var(--color-icon-light);
+}
+
+/* Луна сбоку -> темная */
+.theme-switcher__checkbox:not(:checked)+.theme-switcher__label .theme-switcher__icon--moon::after {
+    background-color: var(--color-icon-dark);
+}
+
+/* ХОВЕР: вокруг луны растет круг ховера, сама луна подсвечивается светлым */
+.theme-switcher__checkbox:not(:checked)+.theme-switcher__label:hover .theme-switcher__icon--moon::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.theme-switcher__checkbox:not(:checked)+.theme-switcher__label:hover .theme-switcher__icon--moon::after {
+    background-color: var(--color-icon-light);
+}
+
+
+/* --- СОСТОЯНИЕ 2: Выбрана ЛУНА (Чекбокс АКТИВЕН) --- */
+
+/* Движение ползунка вправо без изменения его цвета */
+.theme-switcher__checkbox:checked+.theme-switcher__label .theme-switcher__slider {
+    transform: translateX(calc(var(--switcher-width) - var(--slider-size) - (var(--switcher-padding) * 2)));
+}
+
+/* ЗЕРКАЛЬНО: Луна на ползунке -> светлая, Солнце сбоку -> темное */
+.theme-switcher__checkbox:checked+.theme-switcher__label .theme-switcher__icon--moon::after {
+    background-color: var(--color-icon-light);
+}
+
+.theme-switcher__checkbox:checked+.theme-switcher__label .theme-switcher__icon--sun::after {
+    background-color: var(--color-icon-dark);
+}
+
+/* ХОВЕР ЗЕРКАЛЬНО: вокруг солнца растет круг ховера, солнце подсвечивается светлым */
+.theme-switcher__checkbox:checked+.theme-switcher__label:hover .theme-switcher__icon--sun::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.theme-switcher__checkbox:checked+.theme-switcher__label:hover .theme-switcher__icon--sun::after {
+    background-color: var(--color-icon-light);
+}
+
+/* Эффект фокуса клавиатуры */
+.theme-switcher__checkbox:focus-visible+.theme-switcher__label {
+    outline: 2px solid var(--color-slider-switcher);
+    outline-offset: 2px;
+}
