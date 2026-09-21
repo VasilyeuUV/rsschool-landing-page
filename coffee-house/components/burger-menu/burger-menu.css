@@ -171,3 +171,16 @@
         gap: 28px;
     }
 }
+
+
+
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+[data-theme="dark"] {
+    .burger-menu__link--menu {
+        background-image: url('../../assets/icons/coffee-cup-dark.svg') !important;
+    }
+}

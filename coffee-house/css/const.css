@@ -62,7 +62,7 @@
 
     --font-link: 600 16px/150% var(--font-family);
     --font-burger-link: 600 clamp(24px, 2.22vw, 32px) / 125% var(--font-family);
-    
+
     --font-button: var(--font-link);
 
 
@@ -85,9 +85,15 @@
     --text-color-secondary: #C1B6AD;
     --text-color-inverse: #403F3D;
 
-    --background-color-body: #403F3D;
-    --background-color-container: #665F55;
+    --background-color-body: #292826;
+    --background-color-container: #E1D4C9;
 
     --border-color-light: #665F55;
-    --border-color-dark: #C1B6AD;
+    --border-color-dark: #E1D4C9;
+
+
+    --color-border: var(--border-color-light);
+    --color-icon-light: #403F3D;
+    --color-icon-dark: #E1D4C9;
+    --color-slider-hover: #E1D4C9;
 }

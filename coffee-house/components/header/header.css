@@ -10,15 +10,8 @@
     margin-bottom: 10px;
 }
 
-/* .header__content:last-child {
-    margin-right: 0;
-} */
-
 /* Логотип */
 .header__logo {
-    /* display: flex;
-    justify-content: flex-start;
-    margin-top: 10px; */
     flex: 0 0 auto;
 }
 
@@ -107,5 +100,22 @@
 
     .burger-menu {
         display: block !important;
+    }
+}
+
+
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+[data-theme="dark"] {
+
+    .header__logo-pic {
+        content: url('../../assets/icons/logo-dark.svg')
+    }
+
+    .header__burger-link {
+        background-image: url('../../assets/icons/coffee-cup-dark.svg') !important;
     }
 }

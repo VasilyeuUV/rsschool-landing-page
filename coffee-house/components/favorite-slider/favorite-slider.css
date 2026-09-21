@@ -220,3 +220,38 @@
         margin-top: 24px;
     }
 }
+
+
+
+/* =========================================================
+   DARK THEME: SLIDER CONTROLS & PAGINATION
+   ========================================================= */
+
+[data-theme="dark"] {
+
+    .button__prev {
+        background-image: url('../../assets/icons/arrows/arrow-left-light.svg') !important;
+    }
+
+    .button__next {
+        background-image: url('../../assets/icons/arrows/arrow-right-light.svg') !important;
+    }
+
+    .button__prev:hover:not(:disabled) {
+        background-image: url('../../assets/icons/arrows/arrow-left.svg') !important;
+    }
+
+    .button__next:hover:not(:disabled) {
+        background-image: url('../../assets/icons/arrows/arrow-right.svg') !important;
+    }
+
+    .favorite__slider--dot {
+        background-color: var(--text-color-primary);
+        opacity: 0.3;
+    }
+
+    .favorite__slider--dot:hover,
+    .favorite__slider--dot-active {
+        opacity: 1 !important;
+    }
+}

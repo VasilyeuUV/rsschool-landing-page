@@ -4,13 +4,28 @@ document.addEventListener('DOMContentLoaded', loadComponents);
  * Асинхронная загрузка компонентов страницы.
  */
 async function loadComponents() {
+    applySavedTheme();
+
     const components = document.querySelectorAll('[data-component]');
 
     for (const component of components) {
         await loadComponent(component);
     }
 
-    scrollToInitialHash();
+    if (typeof scrollToInitialHash === 'function') {
+        scrollToInitialHash();
+    }
+}
+
+
+/**
+ * Считывает сохраненную тему из localStorage и мгновенно применяет ее к документу.
+ */
+function applySavedTheme() {
+    const savedTheme = localStorage.getItem('theme')
+        || 'light';
+
+    document.documentElement.setAttribute('data-theme', savedTheme);
 }
 
 
@@ -192,10 +207,10 @@ function loadScript(url) {
  */
 function scrollToInitialHash() {
     const hash = window.location.hash; // Получаем, например, "#mobile-app"
-    
+
     if (hash) {
         const targetElement = document.querySelector(hash);
-        
+
         if (targetElement) {
             setTimeout(() => {
                 targetElement.scrollIntoView({

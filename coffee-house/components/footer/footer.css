@@ -93,3 +93,28 @@
         margin: 24px 0 32px;
     }
 }
+
+
+
+
+/* =========================================================
+   DARK THEME: SOCIAL ICONS SUBSTITUTION (FOOTER)
+   ========================================================= */
+
+[data-theme="dark"] {
+
+    --text-color-inverse: #E1D4C9;
+    --background-color-container: #403F3D;
+
+    .footer__contact-adress {
+        background-image: url('../../assets/icons/contacts/pin-alt-dark.svg') !important;
+    }
+
+    .footer__contact-phone {
+        background-image: url('../../assets/icons/contacts/phone-dark.svg');
+    }
+
+    .footer__contact-clock {
+        background-image: url('../../assets/icons/contacts/clock-dark.svg');
+    }
+}

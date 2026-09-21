@@ -50,6 +50,7 @@ h1,
 h2,
 h3,
 p {
+    color: var(--text-color-primary);
     margin-top: 0;
 }
 
@@ -327,6 +328,52 @@ ol {
 
     h2 {
         font-size: 32px;
+    }
+}
+
+
+
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+[data-theme="dark"] {
+
+    .twitter,
+    .twitter:not(:hover),
+    .twitter:hover {
+        background-image: url('../assets/icons/social/twitter.svg') !important;
+    }
+
+    .instagramm,
+    .instagramm:not(:hover),
+    .instagramm:hover {
+        background-image: url('../assets/icons/social/instagram.svg') !important;
+    }
+
+    .facebook,
+    .facebook:not(:hover),
+    .facebook:hover {
+        background-image: url('../assets/icons/social/facebook.svg') !important;
+    }
+
+    .appstore,
+    .appstore:not(:hover) {
+        background-image: url('../assets/icons/store/appstore-light-icon.svg') !important;
+    }
+
+    .googleplay,
+    .googleplay:not(:hover) {
+        background-image: url('../assets/icons/store/googleplay-icon-light.svg') !important;
+    }
+
+    .appstore:hover {
+        background-image: url('../assets/icons/store/appstore-icon.svg') !important;
+    }
+
+    .googleplay:hover {
+        background-image: url('../assets/icons/store/googleplay-icon.svg') !important;
     }
 }
 
