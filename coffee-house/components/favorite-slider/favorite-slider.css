@@ -43,7 +43,7 @@
 }
 
 .favorite__slider--image {
-    width: min(100%, 400px);
+    width: min(100%, 480px);
     height: auto;
     margin-bottom: 15px;
 }

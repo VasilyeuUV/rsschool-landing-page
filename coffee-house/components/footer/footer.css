@@ -4,7 +4,7 @@
     min-height: 450px;
     margin-bottom: 40px;
     padding: 100px;
-    gap: 40px;
+    gap: 100px;
     border-radius: 40px;
     background-color: var(--background-color-container);
 }

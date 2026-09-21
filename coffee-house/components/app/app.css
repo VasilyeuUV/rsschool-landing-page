@@ -3,9 +3,9 @@
 }
 
 .download__content {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 630px);
     align-items: center;
-    justify-content: space-between;
     gap: 40px;
 }
 
@@ -40,6 +40,20 @@
     width: 110px;
 }
 
+.download__image {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.download__pic {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
 
 /* =========================================================
    RESPONSIVE
@@ -47,7 +61,8 @@
 
 @media (max-width: 1024px) {
     .download__content {
-        gap: 40px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
     }
 
     .download__content-left,
@@ -59,15 +74,20 @@
 
 @media (max-width: 768px) {
     .download__content {
-        flex-direction: column;
-        align-items: stretch;
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
 
     .download__content-left,
-    .download__content-right {
+    .download__content-right,
+    .download__image {
         width: 100%;
         max-width: 630px;
         margin: 0 auto;
+    }
+
+    .download__image {
+        justify-content: center;
     }
 
     .download__content-right {
