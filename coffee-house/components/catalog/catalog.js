@@ -11,56 +11,58 @@ let displayMultiplier = 1;              // Множитель порций (1 п
  */
 function createProductCard(product) {
     const card = document.createElement('article');
-
     card.className = 'catalog__card';
-
     card.innerHTML = `
         <div class="catalog__card--image">
-            <img
-                class="catalog__card--pic"
-                src="${product.image}"
-                alt="${product.name}"
-            >
+            <img class="catalog__card--pic" src="${product.image}" alt="${product.name}">
         </div>
-
         <div class="catalog__card--content">
-            <h3 class="catalog__card--title">
-                ${product.name}
-            </h3>
-
-            <p class="catalog__card--description">
-                ${product.description}
-            </p>
-
-            <h3 class="catalog__card--price">
-                ${product.price}
-            </h3>
+            <h3 class="catalog__card--title">${product.name}</h3>
+            <p class="catalog__card--description">${product.description}</p>
+            <h3 class="catalog__card--price">${product.price}</h3>
         </div>
     `;
-
     return card;
 }
 
-
 /**
- * Отобразить товары выбранной категории.
+ * Рассчитать, сколько товаров помещается в 2 строки на основе текущей ширины экрана.
  * 
- * @param {object[]} categoryProducts - Массив продуктов в категории.
+ * @returns {number} Количество элементов в одной порции (2 строки).
  */
-function renderProducts(categoryProducts) {
-    const container = document.querySelector(
-        '.catalog__products'
-    );
-
-    if (!container) {
-        return;
-    }
-
-    const cards = categoryProducts.map(createProductCard);
-
-    container.replaceChildren(...cards);
+function getPortionSizeByScreenWidth() {
+    const width = window.innerWidth;
+    if (width > 1200) return 8;
+    if (width > 768) return 6;
+    if (width > 480) return 4;
+    return 2;
 }
 
+/**
+ * Отобразить товары выбранной категории с учетом текущего лимита строк.
+ */
+function renderProducts() {
+    const container = document.querySelector('.catalog__products');
+    const refreshBtn = document.querySelector('.catalog__refresh-btn');
+
+    if (!container || !refreshBtn) return;
+
+    const allCategoryProducts = getProductsByCategory(currentCategory);
+    const portionSize = getPortionSizeByScreenWidth();
+    const currentLimit = portionSize * displayMultiplier;
+
+    let productsToRender = allCategoryProducts;
+
+    if (allCategoryProducts.length > currentLimit) {
+        productsToRender = allCategoryProducts.slice(0, currentLimit);
+        refreshBtn.classList.remove('visually-hidden');
+    } else {
+        refreshBtn.classList.add('visually-hidden');
+    }
+
+    const cards = productsToRender.map(createProductCard);
+    container.replaceChildren(...cards);
+}
 
 /**
  * Получить товары категории.
@@ -70,39 +72,43 @@ function renderProducts(categoryProducts) {
  */
 function getProductsByCategory(category) {
     return products.filter(
-        product =>
-            product.category === category
+        product => product.category === category
             && !product.isFavorite
     );
 }
-
 
 /**
  * Инициализировать каталог.
  */
 function initCatalog() {
     const buttons = document.querySelectorAll('.catalog__btn-category');
+    const refreshBtn = document.querySelector('.catalog__refresh-btn');
 
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            const category = button.dataset.category;
+            currentCategory = button.dataset.category;
+            displayMultiplier = 1;
 
-            renderProducts(
-                getProductsByCategory(category)
-            );
+            renderProducts();
 
             buttons.forEach(item => {
-                item.classList.toggle(
-                    'catalog__btn-category-active',
-                    item === button
-                );
+                item.classList.toggle('catalog__btn-category-active', item === button);
             });
         });
     });
 
-    renderProducts(
-        getProductsByCategory('coffee')
-    );
+    if (refreshBtn) {
+        refreshBtn.addEventListener('click', () => {
+            displayMultiplier++;
+            renderProducts();
+        });
+    }
+
+    window.addEventListener('resize', () => {
+        renderProducts();
+    });
+
+    renderProducts();
 }
 
 initCatalog();
