@@ -14,13 +14,16 @@ html {
 }
 
 body {
-    max-width: var(--screen-width-desktop, 1440px);
-    min-width: var(--screen-width-mobile, 380px);
+    width: 100%;
     min-height: 100vh;
+    margin: 0;
     font: var(--font-body-medium);
     color: var(--text-color-primary);
     background-color: var(--background-color-body);
-    margin: 0 auto;
+}
+
+body.menu-open {
+    overflow: hidden;
 }
 
 img {
@@ -130,7 +133,8 @@ ol {
    ========================================================= */
 
 .wrapper {
-    max-width: 1440px;
+    width: 100%;
+    max-width: var(--screen-width-desktop);
     margin: 0 auto;
     padding: 0 40px;
 }
@@ -297,10 +301,34 @@ ol {
     .wrapper {
         padding: 0 16px;
     }
+
+    .wrapper__section {
+        margin-bottom: 80px;
+    }
+
+    h1 {
+        font-size: 72px;
+    }
+
+    h2 {
+        font-size: 60px;
+    }
 }
 
 
+@media (max-width: 480px) {
+    .wrapper__section {
+        margin-bottom: 60px;
+    }
 
+    h1 {
+        font-size: 42px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+}
 
 
 

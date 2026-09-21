@@ -180,3 +180,21 @@
     outline: 2px solid var(--color-slider-switcher);
     outline-offset: 2px;
 }
+
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .theme-switcher__wrapper {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 380px) {
+    .theme-switcher__wrapper {
+        margin-top: 6px;
+    }
+}

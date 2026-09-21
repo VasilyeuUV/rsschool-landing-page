@@ -1,5 +1,8 @@
 import { products } from '../../data/products.js';
 
+let currentCategory = 'coffee';         // Глобальное состояние каталога
+let displayMultiplier = 1;              // Множитель порций (1 порция = 2 строки товаров для текущего экрана)
+
 /**
  * Создать карточку товара.
  * 

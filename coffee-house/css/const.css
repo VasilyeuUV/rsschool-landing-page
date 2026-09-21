@@ -53,33 +53,26 @@
 
     --font-family: 'Inter', sans-serif;
 
-    --font-heading-1: 600 72px/105% var(--font-family);
-    --font-heading-2: 600 60px/125% var(--font-family);
+    --font-heading-1: 600 clamp(42px, 5vw, 72px) / 105% var(--font-family);
+    --font-heading-2: 600 clamp(32px, 4.17vw, 60px) / 125% var(--font-family);
     --font-heading-3: 600 24px/125% var(--font-family);
 
     --font-body-medium: 400 16px/150% var(--font-family);
     --font-body-caption: 600 10px/140% var(--font-family);
 
     --font-link: 600 16px/150% var(--font-family);
-    --font-burger-link: 600 32px/125% var(--font-family);
+    --font-burger-link: 600 clamp(24px, 2.22vw, 32px) / 125% var(--font-family);
+    
     --font-button: var(--font-link);
 
 
     /* SCREEN BREAKPOINTS */
+
     --screen-width-desktop: 1440px;
     --screen-width-laptop: 1024px;
     --screen-width-tablet: 768px;
     --screen-width-mobile-large: 480px;
     --screen-width-mobile: 380px;
-    /* ==========================================================================
-    КОНСТАНТЫ ЭКРАНОВ (BREAKPOINTS)
-    ==========================================================================
-    DESKTOP (Large)   : 1440px  -> Стандартные мониторы / Ноутбуки
-    LAPTOP            : 1024px  -> Нетбуки / Большие планшеты (iPad Pro)
-    TABLET            : 768px   -> Стандартные планшеты (Портретная ориентация)
-    MOBILE (Large)    : 480px   -> Большие смартфоны
-    MOBILE (Small)    : 380px   -> Минимальная базовая ширина современных телефонов
-    ========================================================================== */
 }
 
 

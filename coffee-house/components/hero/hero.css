@@ -3,19 +3,22 @@
     height: 644px;
     padding: 79px 100px;
     border-radius: 40px;
-    background: url('../../assets/img/hero/img-hero.jpg') no-repeat left -28px;
+    background: url('../../assets/img/hero/img-hero.jpg') no-repeat center center;
     background-size: cover;
+    box-sizing: border-box;
 }
 
 /* Блок контента секции */
 .hero__content {
+    width: 100%;
     max-width: 530px;
-    color: var(--text-color-inverse);
     margin-top: 20px;
+    color: var(--text-color-inverse);
 }
 
 /* Заголовок секции */
 .hero__title {
+    font: var(--font-heading-1);
     margin-bottom: 40px;
 }
 
@@ -28,14 +31,55 @@
 /* Кнопка перехода в Меню */
 .hero__btn-menu {
     background-color: var(--background-color-body);
+    margin: 1px -1px;
     transition-property: padding-right;
     transition-duration: 1s;
     transition-timing-function: ease;
-    margin: 1px -1px;
 }
 
 .hero__btn-menu:hover {
     padding-right: 20px;
     background: url('../../assets/icons/coffee-cup.svg') no-repeat 120px 20px;
     background-color: var(--background-color-body);
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+    .wrapper__hero {
+        height: 540px; 
+        padding: 70px 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper__hero {
+        height: 724px;
+        padding: 60px 40px;
+        border-radius: 30px;
+    }
+
+    .hero__content {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrapper__hero {
+        min-height: 380px;
+        padding: 40px 24px;
+        border-radius: 24px;
+    }
+
+    .hero__title {
+        margin-bottom: 32px;
+    }
+
+    .hero__lead {
+        margin-bottom: 32px;
+    }
 }

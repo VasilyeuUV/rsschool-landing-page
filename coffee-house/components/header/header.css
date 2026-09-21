@@ -1,38 +1,39 @@
 /* Главный контейнер хедера */
 .header__content {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-width: 0;
     padding: 10px 0;
     margin-bottom: 10px;
 }
 
-.header__content:last-child {
-  margin-right: 0;
-}
+/* .header__content:last-child {
+    margin-right: 0;
+} */
 
 /* Логотип */
 .header__logo {
-    display: flex;
+    /* display: flex;
     justify-content: flex-start;
-    margin-top: 10px;
+    margin-top: 10px; */
+    flex: 0 0 auto;
 }
 
 /* Навигация */
 .header__nav {
     display: flex;
     justify-content: center;
-    margin-right: 45px;
+    margin: 0 auto;
 }
 
 /* Спсисок пунктов навигации */
 .header__list {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
-    margin-top: 6px;
+    gap: clamp(20px, 2.78vw, 40px);
 }
 
 /* Блок управления */
@@ -41,14 +42,24 @@
     align-items: center;
     justify-content: flex-end;
     gap: 5px;
+    flex: 0 0 auto;
     margin-top: 6px;
 }
 
+/* По умолчанию блок бургер-меню скрыт */
+.header__burger,
+.burger-menu {
+    display: none;
+}
 
 
 /* =========================================================
    MENU ITEM
    ========================================================= */
+
+.header__menu-link {
+    display: flex;
+}
 
 /* Пункт меню */
 .header__burger-link {
@@ -62,8 +73,39 @@
     cursor: default;
     pointer-events: none;
     color: var(--text-color-primary) !important;
-
     border-bottom: 2px solid var(--text-color-primary);
-    padding-bottom: 2px; 
+    padding-bottom: 2px;
     margin-top: 1px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+    .header__nav {
+        margin-right: 20px;
+    }
+
+    .header__list {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .header__nav,
+    .header__menu-link {
+        display: none !important;
+    }
+
+    .header__actions {
+        margin-left: auto;
+        gap: 16px;
+    }
+
+    .burger-menu {
+        display: block !important;
+    }
 }

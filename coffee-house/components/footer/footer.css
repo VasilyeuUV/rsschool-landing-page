@@ -1,16 +1,18 @@
 .footer__content {
     display: flex;
     flex-wrap: wrap;
-    height: 450px;
+    min-height: 450px;
     margin-bottom: 40px;
     padding: 100px;
+    gap: 40px;
     border-radius: 40px;
     background-color: var(--background-color-container);
 }
 
 .footer__content-left {
+    flex: 1 1 530px;
     max-width: 530px;
-    margin-right: 100px;
+    margin-right: 0;
 }
 
 .footer__title {
@@ -36,7 +38,6 @@
 
 .footer__contact-adress {
     margin-bottom: 20px;
-
     background: url('../../assets/icons/contacts/pin-alt.svg') no-repeat left center;
 }
 
@@ -47,4 +48,48 @@
 
 .footer__contact-clock {
     background: url('../../assets/icons/contacts/clock.svg') no-repeat left center;
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+    .footer__content {
+        padding: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer__content {
+        min-height: 0;
+        padding: 40px;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        border-radius: 30px;
+    }
+
+    .footer__content-left {
+        width: 100%;
+        max-width: 530px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer__content {
+        padding: 24px;
+        border-radius: 24px;
+    }
+
+    .footer__title {
+        margin-bottom: 32px;
+    }
+
+    .footer__contact-title {
+        margin: 24px 0 32px;
+    }
 }
