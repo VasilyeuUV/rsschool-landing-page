@@ -173,13 +173,6 @@ function initializeBurgerMenu() {
     panel = document.querySelector('.burger-menu__panel');
     list = document.querySelector('.burger-menu__list');
 
-    if (!button
-        || !panel
-        || !list) {
-        setTimeout(initializeBurgerMenu, 10);
-        return;
-    }
-
     renderNavigation();
 
     button.addEventListener('click', toggleMenu);
