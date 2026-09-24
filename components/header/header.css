@@ -1,0 +1,123 @@
+/* Главный контейнер хедера */
+.header__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-width: 0;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+/* Логотип */
+.header__logo {
+    flex: 0 0 auto;
+    margin-top: 10px;
+}
+
+/* Навигация */
+.header__nav {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+/* Спсисок пунктов навигации */
+.header__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(20px, 2.78vw, 40px);
+    margin: 8px 40px 0 0 ;
+}
+
+/* Блок управления */
+.header__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    flex: 0 0 auto;
+    margin-top: 6px;
+}
+
+/* По умолчанию блок бургер-меню скрыт */
+.header__burger,
+.burger-menu {
+    display: none;
+}
+
+
+/* =========================================================
+   MENU ITEM
+   ========================================================= */
+
+.header__menu-link {
+    display: flex;
+}
+
+/* Пункт меню */
+.header__burger-link {
+    display: inline-block;
+    padding-right: 29px;
+    background: url('../../assets/icons/coffee-cup.svg') no-repeat right top;
+}
+
+/* Отключаем клики по активной ссылке Menu */
+.header__burger-link--active {
+    cursor: default;
+    pointer-events: none;
+    color: var(--text-color-primary) !important;
+    border-bottom: 2px solid var(--text-color-primary);
+    padding-bottom: 2px;
+    margin-top: 1px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+    .header__nav {
+        margin-right: 20px;
+    }
+
+    .header__list {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .header__nav,
+    .header__menu-link {
+        display: none !important;
+    }
+
+    .header__actions {
+        margin-left: auto;
+        gap: 16px;
+    }
+
+    .burger-menu {
+        display: block !important;
+    }
+}
+
+
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+[data-theme="dark"] {
+
+    .header__logo-pic {
+        content: url('../../assets/icons/logo-dark.svg')
+    }
+
+    .header__burger-link {
+        background-image: url('../../assets/icons/coffee-cup-dark.svg') !important;
+    }
+}

@@ -1,0 +1,120 @@
+.footer__content {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 450px;
+    margin-bottom: 40px;
+    padding: 100px;
+    gap: 100px;
+    border-radius: 40px;
+    background-color: var(--background-color-container);
+}
+
+.footer__content-left {
+    flex: 1 1 530px;
+    max-width: 530px;
+    margin-right: 0;
+}
+
+.footer__title {
+    margin-bottom: 40px;
+}
+
+.footer__link {
+    display: block;
+    margin-bottom: 16px;
+    padding-left: 28px;
+    font: var(--font-link);
+    text-decoration: none;
+}
+
+.footer__social-btn {
+    margin-right: 7px;
+    border: 1px solid var(--border-color-light);
+}
+
+.footer__contact-title {
+    margin: 33px 0 38px;
+}
+
+.footer__contact-adress {
+    margin-bottom: 20px;
+    background: url('../../assets/icons/contacts/pin-alt.svg') no-repeat left center;
+}
+
+.footer__contact-phone {
+    margin-bottom: 20px;
+    background: url('../../assets/icons/contacts/phone.svg') no-repeat left center;
+}
+
+.footer__contact-clock {
+    background: url('../../assets/icons/contacts/clock.svg') no-repeat left center;
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+    .footer__content {
+        padding: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer__content {
+        min-height: 0;
+        padding: 40px;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        border-radius: 30px;
+    }
+
+    .footer__content-left {
+        width: 100%;
+        max-width: 530px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer__content {
+        padding: 24px;
+        border-radius: 24px;
+    }
+
+    .footer__title {
+        margin-bottom: 32px;
+    }
+
+    .footer__contact-title {
+        margin: 24px 0 32px;
+    }
+}
+
+
+
+
+/* =========================================================
+   DARK THEME: SOCIAL ICONS SUBSTITUTION (FOOTER)
+   ========================================================= */
+
+[data-theme="dark"] {
+
+    --text-color-inverse: #E1D4C9;
+    --background-color-container: #403F3D;
+
+    .footer__contact-adress {
+        background-image: url('../../assets/icons/contacts/pin-alt-dark.svg') !important;
+    }
+
+    .footer__contact-phone {
+        background-image: url('../../assets/icons/contacts/phone-dark.svg');
+    }
+
+    .footer__contact-clock {
+        background-image: url('../../assets/icons/contacts/clock-dark.svg');
+    }
+}

@@ -1,0 +1,116 @@
+.download {
+    margin-bottom: 100px;
+}
+
+.download__content {
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 630px);
+    align-items: center;
+    gap: 40px;
+}
+
+.download__content-right {
+    text-align: right;
+}
+
+.download__lead {
+    width: min(100%, 630px);
+    margin-bottom: 40px;
+    font: var(--font-body-medium);
+}
+
+.download__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.download__btn {
+    flex: 0 1 200px;
+    margin: 0;
+    padding-left: 40px;
+    border: 1px solid var(--border-color-dark);
+    text-align: left;
+}
+
+.download__btn-text {
+    margin-top: -8px;
+    width: 110px;
+}
+
+.download__image {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.download__pic {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+    .download__content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .download__content-left,
+    .download__content-right {
+        flex: 1 1 0;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .download__content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .download__content-left,
+    .download__content-right,
+    .download__image {
+        width: 100%;
+        max-width: 630px;
+        margin: 0 auto;
+    }
+
+    .download__image {
+        justify-content: center;
+    }
+
+    .download__content-right {
+        text-align: center;
+    }
+
+    .download__buttons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .download {
+        margin-bottom: 60px;
+    }
+
+    .download__buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .download__btn {
+        width: 100%;
+        flex-basis: 64px;
+    }
+}

@@ -1,0 +1,99 @@
+/* =========================================================
+   FONTS
+   ========================================================= */
+
+@font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/inter-v13-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../assets/fonts/inter-v13-latin-600.woff2') format('woff2');
+}
+
+
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
+
+:root {
+    /* COLORS */
+
+    --color-dark: #665F55;
+    --color-light: #E1D4C9;
+    --color-accent: #B0907A;
+    --color-backdrop: rgba(64, 63, 61, 0.80);
+
+    --color-border-light: #C1B6AD;
+    --color-border-dark: #665F55;
+
+
+    /* SEMANTIC COLORS */
+
+    --text-color-primary: #403F3D;
+    --text-color-secondary: #665F55;
+    --text-color-inverse: #E1D4C9;
+    --text-color-accent: #B0907A;
+
+    --background-color-body: #E1D4C9;
+    --background-color-container: #665F55;
+
+    --border-color-light: #C1B6AD;
+    --border-color-dark: #665F55;
+
+
+    /* TYPOGRAPHY */
+
+    --font-family: 'Inter', sans-serif;
+
+    --font-heading-1: 600 clamp(42px, 5vw, 72px) / 105% var(--font-family);
+    --font-heading-2: 600 clamp(32px, 4.17vw, 60px) / 125% var(--font-family);
+    --font-heading-3: 600 24px/125% var(--font-family);
+
+    --font-body-medium: 400 16px/150% var(--font-family);
+    --font-body-caption: 600 10px/140% var(--font-family);
+
+    --font-link: 600 16px/150% var(--font-family);
+    --font-burger-link: 600 clamp(24px, 2.22vw, 32px) / 125% var(--font-family);
+
+    --font-button: var(--font-link);
+
+
+    /* SCREEN BREAKPOINTS */
+
+    --screen-width-desktop: 1440px;
+    --screen-width-laptop: 1024px;
+    --screen-width-tablet: 768px;
+    --screen-width-mobile-large: 480px;
+    --screen-width-mobile: 380px;
+}
+
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+[data-theme="dark"] {
+    --text-color-primary: #E1D4C9;
+    --text-color-secondary: #C1B6AD;
+    --text-color-inverse: #403F3D;
+
+    --background-color-body: #292826;
+    --background-color-container: #E1D4C9;
+
+    --border-color-light: #665F55;
+    --border-color-dark: #E1D4C9;
+
+
+    --color-border: var(--border-color-light);
+    --color-icon-light: #403F3D;
+    --color-icon-dark: #E1D4C9;
+    --color-slider-hover: #E1D4C9;
+}

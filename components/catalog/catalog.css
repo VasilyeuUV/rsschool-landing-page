@@ -1,0 +1,256 @@
+/* Оболочка каталога */
+.wrapper__catalog {
+    width: 100%;
+}
+
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+/* Блок заголовка */
+.catalog__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Заголовок */
+.catalog__title {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   CATEGORIES
+   ========================================================= */
+
+/* Блок категорий продуктов */
+.catalog__categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 40px;
+    gap: 15px;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+/* Кнопка выбора категории товара */
+.catalog__btn-category {
+    height: 46px;
+    min-width: 0;
+    width: auto;
+    background-color: transparent;
+    border: 1px solid var(--border-color-dark);
+    color: var(--text-color-primary, #403F3D);
+    text-align: right;
+    padding: 0 16px 0 0;
+    display: inline-flex;
+    transition:
+        background-color 0.4s ease,
+        border-color 0.4s ease,
+        color 0.4s ease;
+}
+
+/* Действия над кнопками */
+.catalog__btn-category:hover,
+.catalog__btn-category:focus-visible,
+.catalog__btn-category-active {
+    background-color: var(--background-color-container, #665F55);
+    border-color: var(--background-color-container, #665F55);
+    color: var(--text-color-inverse);
+}
+
+/* Блок иконки кнопок */
+.catalog__category-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin: 8px;
+    border-radius: 50%;
+    background-color: var(--border-color-light);
+    overflow: hidden;
+    transition: background-color 0.4s ease;
+}
+
+.catalog__btn-category:hover .catalog__category-icon,
+.catalog__btn-category:focus-visible .catalog__category-icon,
+.catalog__btn-category-active .catalog__category-icon {
+    background-color: var(--text-color-inverse);
+}
+
+/* Изображение иконки */
+.catalog__category-icon img {
+    width: 55%;
+    height: 55%;
+    object-fit: contain;
+}
+
+
+
+/* =========================================================
+   PRODUCTS
+   ========================================================= */
+
+/* Блок каталога продуктов */
+.catalog__products {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 40px;
+}
+
+
+
+/* =========================================================
+   PRODUCT CARD
+   ========================================================= */
+
+/* Карточка каталога */
+.catalog__card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    border: 1px solid var(--border-color-light);
+    border-radius: 40px;
+    overflow: hidden;
+    transition:
+        transform 0.3s,
+        border-width 0.3s;
+}
+
+.catalog__card:hover {
+    border-width: 3px;
+    transform: scale(1.05);
+}
+
+.catalog__card--image {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+/* Изображение товара */
+.catalog__card--pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Блок контента товара */
+.catalog__card--content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Название товара */
+.catalog__card--title {
+    margin-bottom: 12px;
+}
+
+/* Описание товара */
+.catalog__card--description {
+    flex-grow: 1;
+    margin-bottom: 12px;
+}
+
+/* Цена товара */
+.catalog__card--price {
+    margin: 0;
+}
+
+
+
+/* =========================================================
+   REFRESH BUTTON
+   ========================================================= */
+
+/* Стили кнопки обновления (Refresh) */
+.catalog__refresh-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin: 40px auto 0;
+    padding: 0;
+    background-color: transparent;
+    border: 1px solid var(--border-color-dark);
+    border-radius: 50%;
+    color: var(--text-color-primary);
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.catalog__refresh-btn:hover {
+    background-color: var(--background-color-container);
+    border-color: var(--background-color-container);
+    color: var(--text-color-inverse);
+}
+
+.catalog__refresh-btn svg {
+    transition: transform 0.5s ease;
+}
+
+.catalog__refresh-btn:hover svg {
+    transform: rotate(360deg);
+}
+
+.catalog__refresh-btn.visually-hidden {
+    display: none !important;
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+    .catalog__products {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .catalog__products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .catalog__categories {
+        gap: 10px;
+    }
+
+    .catalog__btn-category {
+        margin: 0;
+    }
+
+    .catalog__card {
+        border-radius: 30px;
+    }
+
+    .catalog__card--content {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .catalog__products {
+        grid-template-columns: 1fr;
+    }
+
+    .catalog__categories {
+        justify-content: center;
+    }
+}

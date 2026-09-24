@@ -1,0 +1,47 @@
+<section id="catalog" class="wrapper wrapper__section catalog">
+    <div class="wrapper__catalog">
+
+        <div class="catalog__header">
+            <h1 class="visually-hidden"> Resource Coffee House. Menu </h1>
+            <h2 class="catalog__title">
+                Behind each of our cups hides an
+                <em class="title__accent">amazing surprise</em>
+            </h2>
+
+            <nav class="catalog__categories" aria-label="catalog categories">
+
+                <button class="btn btn__oval link catalog__btn-category catalog__btn-category-active" type="button"
+                    data-category="coffee">
+                    <span class="catalog__category-icon">
+                        <img src="./assets/icons/cap-icon.svg" alt="Coffee icon">
+                    </span>
+                    <span>Coffee</span>
+                </button>
+
+                <button class="btn btn__oval link catalog__btn-category" type="button" data-category="tea">
+                    <span class="catalog__category-icon">
+                        <img src="./assets/icons/tea-icon.svg" alt="Tea icon">
+                    </span>
+                    <span>Tea</span>
+                </button>
+
+                <button class="btn btn__oval link catalog__btn-category" type="button" data-category="dessert">
+                    <span class="catalog__category-icon">
+                        <img src="./assets/icons/dessert-icon.svg" alt="Dessert icon">
+                    </span>
+                    <span>Dessert</span>
+                </button>
+
+            </nav>
+        </div>
+
+        <div class="catalog__products"></div>
+
+        <button class="catalog__refresh-btn visually-hidden" type="button" aria-label="Load more products">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M21.5 2V6h-4M21.34 15.57a10 10 0 1 1-.57-8.38l.73-.73" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+    </div>
+</section>

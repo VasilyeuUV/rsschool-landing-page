@@ -1,0 +1,415 @@
+/* =========================================================
+   BASIC
+   ========================================================= */
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    font: var(--font-body-medium);
+    color: var(--text-color-primary);
+    background-color: var(--background-color-body);
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: inherit;
+}
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+
+h1 {
+    margin-bottom: 0;
+    font: var(--font-heading-1);
+}
+
+h1 span {
+    font: var(--font-heading-1);
+}
+
+h2 {
+    margin-bottom: 40px;
+    font: var(--font-heading-2);
+    text-align: left;
+}
+
+h3 {
+    margin-bottom: 0;
+    font: var(--font-heading-3);
+}
+
+.title__accent,
+.accent {
+    color: var(--text-color-accent);
+    font-style: italic;
+}
+
+.light {
+    color: var(--text-color-inverse);
+}
+
+.dark {
+    color: var(--text-color-primary);
+}
+
+.caption {
+    margin: 0;
+    font: var(--font-body-caption);
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.center {
+    text-align: center;
+}
+
+/* Скрываем элемент из отображенния, но он продолжает работать */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+
+
+/* =========================================================
+   LISTS
+   ========================================================= */
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
+.wrapper {
+    width: 100%;
+    max-width: var(--screen-width-desktop);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.wrapper__section {
+    margin-bottom: 100px;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+.link {
+    color: var(--text-color-primary);
+    font: var(--font-link);
+    text-decoration: none;
+}
+
+.interactive__link {
+    position: relative;
+    transition: 0.2s;
+}
+
+.interactive__link::after {
+    position: absolute;
+    right: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    content: "";
+    background-color: var(--text-color-primary);
+    transform: scale(0, 1);
+    transform-origin: right top;
+    transition:
+        transform 0.4s,
+        transform-origin 0s 0.25s;
+}
+
+.interactive__link:hover::after,
+.interactive__link:focus-visible::after,
+.interactive__link:active::after {
+    transform: scale(1, 1);
+    transform-origin: left top;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 10px 0;
+    border: 0;
+    border-radius: 100px;
+    font: var(--font-button);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn__round {
+    width: 60px;
+    height: 60px;
+}
+
+.btn__oval {
+    width: 200px;
+    height: 64px;
+}
+
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+:focus {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   TRANSITION
+   ========================================================= */
+
+.transition {
+    transition-property: background-color, color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+}
+
+
+/* =========================================================
+   SOCIAL / STORE BUTTONS
+   ========================================================= */
+
+.twitter,
+.twitter:not(:hover) {
+    background: url('../assets/icons/social/twitter.svg') no-repeat center center;
+}
+
+.twitter:hover {
+    background: url('../assets/icons/social/twitter-dark.svg') no-repeat center center;
+    background-color: var(--background-color-body);
+}
+
+.instagramm,
+.instagramm:not(:hover) {
+    background: url('../assets/icons/social/instagram.svg') no-repeat center center;
+}
+
+.instagramm:hover {
+    background: url('../assets/icons/social/instagram-dark.svg') no-repeat center center;
+    background-color: var(--background-color-body);
+}
+
+.facebook,
+.facebook:not(:hover) {
+    background: url('../assets/icons/social/facebook.svg') no-repeat center center;
+}
+
+.facebook:hover {
+    background: url('../assets/icons/social/facebook-dark.svg') no-repeat center center;
+    background-color: var(--background-color-body);
+}
+
+.appstore,
+.appstore:not(:hover) {
+    background: url('../assets/icons/store/appstore-icon.svg') no-repeat 20px center;
+}
+
+.appstore:hover {
+    background: url('../assets/icons/store/appstore-light-icon.svg') no-repeat 20px center;
+    background-color: var(--background-color-container);
+    color: var(--text-color-inverse);
+}
+
+.googleplay,
+.googleplay:not(:hover) {
+    background: url('../assets/icons/store/googleplay-icon.svg') no-repeat 20px center;
+}
+
+.googleplay:hover {
+    background: url('../assets/icons/store/googleplay-icon-light.svg') no-repeat 20px center;
+    background-color: var(--background-color-container);
+    color: var(--text-color-inverse);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 0 16px;
+    }
+
+    .wrapper__section {
+        margin-bottom: 80px;
+    }
+
+    h1 {
+        font-size: 72px;
+    }
+
+    h2 {
+        font-size: 60px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .wrapper__section {
+        margin-bottom: 60px;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+}
+
+
+
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+[data-theme="dark"] {
+
+    .twitter,
+    .twitter:not(:hover),
+    .twitter:hover {
+        background-image: url('../assets/icons/social/twitter.svg') !important;
+    }
+
+    .instagramm,
+    .instagramm:not(:hover),
+    .instagramm:hover {
+        background-image: url('../assets/icons/social/instagram.svg') !important;
+    }
+
+    .facebook,
+    .facebook:not(:hover),
+    .facebook:hover {
+        background-image: url('../assets/icons/social/facebook.svg') !important;
+    }
+
+    .appstore,
+    .appstore:not(:hover) {
+        background-image: url('../assets/icons/store/appstore-light-icon.svg') !important;
+    }
+
+    .googleplay,
+    .googleplay:not(:hover) {
+        background-image: url('../assets/icons/store/googleplay-icon-light.svg') !important;
+    }
+
+    .appstore:hover {
+        background-image: url('../assets/icons/store/appstore-icon.svg') !important;
+    }
+
+    .googleplay:hover {
+        background-image: url('../assets/icons/store/googleplay-icon.svg') !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+/* Временный слой для сверки макета Главной страницы */
+/* body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1440px;
+    height: 4388px;
+    background: url('../assets/img/_design/[D]\ Home.png') no-repeat center top;
+    opacity: 0.3;
+    z-index: 9999;
+    pointer-events: none;
+} */
+
+/* Временный слой для сверки макета Страницы меню */
+/* body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1440px;
+    height: 4388px;
+    background: url('../assets/img/_design/[D]\ Menu\ _\ Coffee.png') no-repeat center top;
+    opacity: 0.3;
+    z-index: 9999;
+    pointer-events: none;
+} */
