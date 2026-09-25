@@ -15,6 +15,8 @@ async function loadComponents() {
     if (typeof scrollToInitialHash === 'function') {
         scrollToInitialHash();
     }
+
+    document.dispatchEvent(new CustomEvent('components:loaded'));
 }
 
 
