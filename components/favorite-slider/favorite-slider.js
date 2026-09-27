@@ -3,6 +3,7 @@ import { products } from '../../data/products.js';
 const favoriteProducts = products.filter(
     product => product.isFavorite
 );
+const SLIDE_DURATION = 5000;                    // Время отображения одного слайда в миллисекундах
 
 
 /**
@@ -13,7 +14,6 @@ const favoriteProducts = products.filter(
  */
 function createSlide(product) {
     const slide = document.createElement('article');
-
     slide.className = 'favorite__slider--slide';
 
     slide.innerHTML = `
@@ -55,10 +55,8 @@ function createPagination(pagination, count) {
 
     for (let index = 0; index < count; index++) {
         const dot = document.createElement('button');
-
         dot.type = 'button';
         dot.className = 'favorite__slider--dot';
-
         dot.setAttribute(
             'aria-label',
             `Go to slide ${index + 1}`
@@ -106,11 +104,14 @@ function initSlider(slider) {
     const track = slider.querySelector('.favorite__slider--track');
     const previousButton = slider.querySelector('.button__prev');
     const nextButton = slider.querySelector('.button__next');
-    const dots = section.querySelectorAll('.favorite__slider--dot');
+    const pagination = section.querySelector('.favorite__slider--pagination');
+    const dots = pagination.querySelectorAll('.favorite__slider--dot');
+    // const dots = section.querySelectorAll('.favorite__slider--dot');
     const slideCount = favoriteProducts.length;
 
     let currentSlide = 1;
     let isAnimating = false;
+    let autoplayTimer = null;
 
     /**
      * Показать конкретный слайд.
@@ -122,10 +123,8 @@ function initSlider(slider) {
         track.style.transition = isAnimate
             ? 'transform 0.3s ease'
             : 'none';
-
         track.style.transform =
             `translateX(-${index * 100}%)`;
-
         currentSlide = index;
     }
 
@@ -160,8 +159,26 @@ function initSlider(slider) {
 
         isAnimating = true;
 
+        resetAutoplay(); 
         showSlide(index);
         updatePagination();
+    }
+
+    /**
+     * Запустить автосмену изображений.
+     */
+    function startAutoplay() {
+        autoplayTimer = setInterval(() => {
+            moveToSlide(currentSlide + 1);
+        }, SLIDE_DURATION);
+    }
+
+    /**
+     * Сбросить автосмену изображений.
+     */
+    function resetAutoplay() {
+        clearInterval(autoplayTimer);
+        startAutoplay();
     }
 
     track.addEventListener('transitionend', event => {
@@ -176,7 +193,6 @@ function initSlider(slider) {
         }
 
         updatePagination();
-
         isAnimating = false;
     });
 
@@ -188,6 +204,7 @@ function initSlider(slider) {
         moveToSlide(currentSlide + 1);
     });
 
+    // Клики по элементам пагинации
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             moveToSlide(index + 1);
@@ -196,6 +213,7 @@ function initSlider(slider) {
 
     showSlide(1, false);
     updatePagination();
+    startAutoplay();
 }
 
 
@@ -210,9 +228,9 @@ function disableSlider(slider) {
     const nextButton = slider.querySelector('.button__next');
     const pagination = section.querySelector('.favorite__slider--pagination');
 
-    previousButton.hidden = true;
-    nextButton.hidden = true;
-    pagination.hidden = true;
+    if (previousButton) previousButton.hidden = true;
+    if (nextButton) nextButton.hidden = true;
+    if (pagination) pagination.hidden = true;
 }
 
 

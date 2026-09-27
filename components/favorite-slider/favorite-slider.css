@@ -125,27 +125,56 @@
 }
 
 .favorite__slider--dot {
+    position: relative;
     width: 40px;
     height: 6px;
     padding: 0;
     border: 0;
     border-radius: 10px;
-    background-color: var(--color-dark);
-    opacity: 0.5;
+    background-color: var(--color-border-light, #C1B6AD);
+    overflow: hidden;
     cursor: pointer;
-    transition:
-        opacity 0.4s,
-        transform 0.4s;
+    opacity: 0.5;
+    transition: opacity 0.4s, transform 0.4s;
 }
 
-.favorite__slider--dot:hover,
+.favorite__slider--dot:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Линия заполнения прогресса */
+.favorite__slider--dot::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: var(--color-dark, #665F55);
+}
+
+/* Активный индикатор */
 .favorite__slider--dot-active {
     opacity: 1;
 }
 
-.favorite__slider--dot:hover {
-    transform: scale(1.1);
+/* Запускаем анимацию на 5 секунд (время до смены слайда) */
+.favorite__slider--dot-active::after {
+    animation: fillProgress 5s linear forwards;
 }
+
+/* Ключевые кадры для плавного заполнения слева направо */
+@keyframes fillProgress {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
 
 
 /* =========================================================
@@ -246,6 +275,7 @@
     }
 
     .favorite__slider--dot {
+        /* background-color: var(--color-border-light, #665F55); */
         background-color: var(--text-color-primary);
         opacity: 0.3;
     }
@@ -253,5 +283,9 @@
     .favorite__slider--dot:hover,
     .favorite__slider--dot-active {
         opacity: 1 !important;
+    }
+
+    .favorite__slider--dot-active::after {
+        background-color: var(--text-color-primary, #E1D4C9);
     }
 }
