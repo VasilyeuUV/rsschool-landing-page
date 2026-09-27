@@ -61,6 +61,8 @@ function openModal(product) {
     updateTotalCost(product);
     overlay.classList.add('modal--active');
     document.body.style.overflow = 'hidden';
+
+    window.addEventListener('keydown', handleEscKey);
 }
 
 
@@ -120,6 +122,17 @@ function updateTotalCost(product) {
 
 
 /**
+ * Обработчик нажатия клавиши Esc.
+ * @param {*} e - Событие.
+ */
+function handleEscKey(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+}
+
+
+/**
  * Закрыть модальное окно.
  */
 function closeModal() {
@@ -128,6 +141,7 @@ function closeModal() {
         overlay.classList.remove('modal--active');
         document.body.style.overflow = '';
         store.currentProduct = null;
+        window.removeEventListener('keydown', handleEscKey);
     }
 }
 
