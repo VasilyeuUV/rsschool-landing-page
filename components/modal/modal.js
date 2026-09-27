@@ -1,5 +1,7 @@
 import { store } from '../../js/state/store.js';
 import { calculateOrderPrice } from '../../js/services/orderService.js';
+import { buildDynamicImageHtml } from '../../js/utils/imageHelper.js';
+
 
 // Текущий выбор пользователя в открытой модалке
 let currentSize = null;       // Сюда запишется объект класса Size
@@ -164,24 +166,7 @@ function buildImageBlockHtml(product) {
     const extensions = ['jpg', 'png', 'webp', 'jpeg'];
     return `
         <div class="modal__product-imageblock">
-            <img 
-                class="product__pic" 
-                src="${product.image}.jpg" 
-                alt="${product.name}"
-                data-ext-index="0"
-                data-ext-list="${extensions.join(',')}"
-                onerror="
-                    const index = parseInt(this.dataset.extIndex) + 1;
-                    const exts = this.dataset.extList.split(',');
-                    if (index < exts.length) {
-                        this.dataset.extIndex = index;
-                        this.src = '${product.image}.' + exts[index];
-                    } else {
-                        this.src = './assets/img/default-fallback.jpg';
-                        this.onerror = null;
-                    }
-                "
-            >
+            ${buildDynamicImageHtml(product.image, product.name, 'product__pic')}
         </div>
     `;
 }

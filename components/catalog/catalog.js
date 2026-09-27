@@ -1,5 +1,6 @@
 import { store } from '../../js/state/store.js';
 import { ProductCategory } from '../../js/constants/productCategory.js';
+import { buildDynamicImageHtml } from '../../js/utils/imageHelper.js';
 
 let currentCategory = ProductCategory.COFFEE;       // Глобальное состояние каталога
 let displayMultiplier = 1;                          // Множитель отображаемых товаров (1 порция = 2 строки товаров для текущего экрана)
@@ -21,25 +22,7 @@ function createProductCard(product) {
 
     card.innerHTML = `
         <div class="catalog__card--image">
-            <img 
-                class="catalog__card--pic" 
-                src="${product.image}.${extensions[0]}" 
-                alt="${product.name}"
-                data-ext-index="0"
-                data-ext-list="${extensions.join(',')}"
-                onerror="
-                    const index = parseInt(this.dataset.extIndex) + 1;
-                    const exts = this.dataset.extList.split(',');
-                    
-                    if (index < exts.length) {
-                        this.dataset.extIndex = index;
-                        this.src = '${product.image}.' + exts[index];
-                    } else {
-                        this.src = './assets/img/default-fallback.jpg';
-                        this.onerror = null; // Защита от бесконечного цикла, если заглушка тоже пропадет
-                    }
-                "
-            >
+            ${buildDynamicImageHtml(product.image, product.name, 'catalog__card--pic')}
         </div>
         <div class="catalog__card--content">
             <h3 class="catalog__card--title">${product.name}</h3>
