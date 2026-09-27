@@ -19,7 +19,7 @@ export class Size {
 
 
     /** Геттер  для вывода на веб-страницу (например: "200 ml"). */
-    get display() { 
+    get displayName() { 
         return `${this.value} ${this.unit}`;
      }
 }
