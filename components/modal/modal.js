@@ -1,6 +1,7 @@
 import { store } from '../../js/state/store.js';
 import { calculateOrderPrice } from '../../js/services/orderService.js';
 import { buildDynamicImageHtml } from '../../js/utils/imageHelper.js';
+import { AppTexts } from '../../js/constants/appTexts.js';
 
 
 // Текущий выбор пользователя в открытой модалке
@@ -149,11 +150,9 @@ function buildModalLayoutHtml(product) {
                 <div class="modal__hr"></div>
                 <div class="product__info">
                     <p class="product__info-icon"></p>
-                    <p class="product__info-message">
-                        The cost is not final. Download our mobile app to see the final price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.
-                    </p>
+                    <p class="product__info-message">${AppTexts.MODAL_INFO_MESSAGE}</p>
                 </div>
-                <button class="modal__close">Close</button>
+                <button class="modal__close">${AppTexts.MODAL_CLOSE_BUTTON}</button>
             </div>
         </div>
     `;
@@ -179,7 +178,7 @@ function buildImageBlockHtml(product) {
 function buildSizesBlockHtml(sizes) {
     return `
         <div class="product__size">
-            <p class="offer__card-description product__description product__size-title">Size</p>
+            <p class="offer__card-description product__description product__size-title">${AppTexts.MODAL_SIZE_TITLE}</p>
             <div class="product__buttons product__size-buttons">
                 ${sizes.map(size => {
         const isActive = size.key === currentSize.key
@@ -206,7 +205,7 @@ function buildSizesBlockHtml(sizes) {
 function buildAdditivesBlockHtml(additives) {
     return `
         <div class="product__additives">
-            <p class="offer__card-description product__description product__size-title">Additives</p>
+            <p class="offer__card-description product__description product__size-title">${AppTexts.MODAL_ADDITIVES_TITLE}</p>
             <div class="product__buttons product__additives-buttons">
                 ${additives.map((additive, index) => `
                     <button class="modal__button" data-additive-name="${additive.name}">
@@ -226,7 +225,7 @@ function buildAdditivesBlockHtml(additives) {
 function buildTotalBlockHtml() {
     return `
         <div class="product__total">
-            <h3 class="product__total-title">Total</h3>
+            <h3 class="product__total-title">${AppTexts.MODAL_TOTAL_TITLE}</h3>
             <h3 class="product__total-cost">$0.00</h3>
         </div>
     `;

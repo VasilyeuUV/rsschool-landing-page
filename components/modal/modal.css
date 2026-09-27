@@ -76,57 +76,99 @@
     margin-top: 8px;
 }
 
+
+
+/* =========================================================
+   MODAL BUTTONS STYLES
+   ========================================================= */
+
 /* Стили oval-кнопок */
 .modal__button {
     height: 46px;
-    border: 1px solid var(--border-color-light);
     border-radius: 100px;
-    padding: 8px 16px 8px 8px;
-    display: flex;
-    align-items: center;
     gap: 8px;
+    opacity: 1;
+    padding: 8px, 16px, 8px, 8px;
+    display: inline-flex;
+    align-items: center;
     background: transparent;
+    border: 1px solid var(--border-color-light, #C1B6AD);
+    color: var(--text-color-primary, #403F3D);
     cursor: pointer;
     font: var(--font-button);
-    color: var(--text-color-dark);
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
+
+/* для кнопок Size */
+.product__size-buttons .modal__button {
+    width: 116px;
+    justify-content: flex-start;
+    /* Кружок слева, текст следует за ним */
+}
+
+/* Для кнопок добавок */
+.product__additives-buttons .modal__button {
+    min-width: 116px;
+}
+
+/* 🔥 ХОВЕР + ПОДСВЕТКА ДЛЯ ВЫДЕЛЕННОЙ КНОПКИ (как договаривались ранее) */
+.modal__button:hover {
+    box-shadow: 0 0 12px 1px rgba(102, 95, 85, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Активное состояние (State="active") */
+.modal__button.btn--active {
+    background: var(--Background-modalControl, #665F55);
+    border-color: var(--Background-modalControl, #665F55);
+    color: var(--text-color-inverse, #E1D4C9);
+}
+
+/* Ховер неактивной кнопки */
+.modal__button:not(.btn--active):hover {
+    background: var(--Background-modalControl, #665F55);
+    border-color: var(--Background-modalControl, #665F55);
+    color: var(--text-color-inverse, #E1D4C9);
+}
+
+/* Сбрасываем подъем, если мышку убрали */
+.modal__button {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+/* =========================================================
+   КРУЖОК И БУКВА/ЦИФРА ВНУТРИ (FIGMA SPECS)
+   ========================================================= */
 
 .modal__text-circle {
     width: 30px;
     height: 30px;
-    background: var(--border-color-light);
-    border-radius: 50%;
-    display: flex;
+    border-radius: 100px;
+    opacity: 1;
+    background: var(--color-border-light, #C1B6AD);
+    color: var(--text-color-primary, #403F3D);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
-    font: var(--font-body-caption);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Состояние Hover (при наведении) */
-.modal__button:hover {
-    background-color: var(--color-dark);
-    border-color: var(--color-dark);
-    color: var(--color-light);
-}
-
+/* Изменение кружка при ховере и для выделенной кнопки */
+.modal__button.btn--active .modal__text-circle,
 .modal__button:hover .modal__text-circle {
-    background-color: var(--background-color-body);
-    color: var(--text-color-dark);
+    background: #E1D4C9;
+    color: var(--text-color-inverse-dark, #403F3D);
 }
 
-/* Состояние Active для зажатых кнопок (Размер или выбранная добавка) */
-.modal__button.btn--active {
-    background-color: var(--color-dark);
-    border-color: var(--color-dark);
-    color: var(--color-light);
-}
 
-.modal__button.btn--active .modal__text-circle {
-    background-color: var(--background-color-body);
-    color: var(--text-color-dark);
-}
+
+
 
 .product__total {
     display: flex;
@@ -162,7 +204,13 @@
     color: var(--color-light);
 }
 
-/* Адаптивность для мобильных */
+
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
 @media (max-width: 768px) {
     .modal__window {
         width: 440px;
@@ -176,6 +224,4 @@
     .modal__product-imageblock {
         display: none;
     }
-
-    /* скрываем картинку по ТЗ на мобилках */
 }
