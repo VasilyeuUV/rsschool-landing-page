@@ -2,6 +2,7 @@ import { store } from '../../js/state/store.js';
 import { calculateOrderPrice } from '../../js/services/orderService.js';
 import { buildDynamicImageHtml } from '../../js/utils/imageHelper.js';
 import { AppTexts } from '../../js/constants/appTexts.js';
+import { ProductCategory } from '../../js/constants/productCategory.js'; 
 
 
 // Текущий выбор пользователя в открытой модалке
@@ -162,10 +163,9 @@ function buildModalLayoutHtml(product) {
                 ${buildTotalBlockHtml()}
                 
                 <div class="modal__hr"></div>
-                <div class="product__info">
-                    <p class="product__info-icon"></p>
-                    <p class="product__info-message">${AppTexts.MODAL_INFO_MESSAGE}</p>
-                </div>
+
+                ${buildInfoBlockHtml(product.category)}
+
                 <button class="modal__close">${AppTexts.MODAL_CLOSE_BUTTON}</button>
             </div>
         </div>
@@ -241,6 +241,31 @@ function buildTotalBlockHtml() {
         <div class="product__total">
             <h3 class="product__total-title">${AppTexts.MODAL_TOTAL_TITLE}</h3>
             <h3 class="product__total-cost">$0.00</h3>
+        </div>
+    `;
+}
+
+
+/**
+ * Формирование динамического блока информации.
+ * 
+ * @param {string} category - Категория текущего товара
+ */
+function buildInfoBlockHtml(category) {
+    const infoMessage = (category === ProductCategory.COFFEE)
+        ? AppTexts.MODAL_INFO_COFFEE
+        : AppTexts.MODAL_INFO_TEA_DESSERT;
+
+    return `
+        <div class="product__info">
+            <svg class="product__info-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <g opacity="1">
+                    <path d="M8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 11V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 5.5v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </g>
+            </svg>
+            <p class="product__info-message">${infoMessage}</p>
         </div>
     `;
 }
