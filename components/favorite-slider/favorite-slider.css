@@ -270,6 +270,7 @@
         background-image: url('../../assets/icons/arrows/arrow-left-light.svg') !important;
     }
 
+    .button__next:hover,
     .button__next:hover:not(:disabled) {
         background-image: url('../../assets/icons/arrows/arrow-right-light.svg') !important;
     }
