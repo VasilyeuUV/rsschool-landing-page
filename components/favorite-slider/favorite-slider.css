@@ -267,11 +267,11 @@
     }
 
     .button__prev:hover:not(:disabled) {
-        background-image: url('../../assets/icons/arrows/arrow-left.svg') !important;
+        background-image: url('../../assets/icons/arrows/arrow-left-light.svg') !important;
     }
 
     .button__next:hover:not(:disabled) {
-        background-image: url('../../assets/icons/arrows/arrow-right.svg') !important;
+        background-image: url('../../assets/icons/arrows/arrow-right-light.svg') !important;
     }
 
     .favorite__slider--dot {
