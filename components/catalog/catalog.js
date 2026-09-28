@@ -1,7 +1,10 @@
-import { products } from '../../data/products.js';
+import { store } from '../../js/state/store.js';
+import { ProductCategory } from '../../js/constants/productCategory.js';
+import { buildDynamicImageHtml } from '../../js/utils/imageHelper.js';
 
-let currentCategory = 'coffee';         // Глобальное состояние каталога
-let displayMultiplier = 1;              // Множитель порций (1 порция = 2 строки товаров для текущего экрана)
+let currentCategory = ProductCategory.COFFEE;       // Глобальное состояние каталога
+let displayMultiplier = 1;                          // Множитель отображаемых товаров (1 порция = 2 строки товаров для текущего экрана)
+
 
 /**
  * Создать карточку товара.
@@ -12,18 +15,24 @@ let displayMultiplier = 1;              // Множитель порций (1 п
 function createProductCard(product) {
     const card = document.createElement('article');
     card.className = 'catalog__card';
+    card.dataset.id = product.id;
+
+    // Массив расширений для поиска существующего файла
+    const extensions = ['jpg', 'png', 'webp', 'svg', 'jpeg'];
+
     card.innerHTML = `
         <div class="catalog__card--image">
-            <img class="catalog__card--pic" src="${product.image}" alt="${product.name}">
+            ${buildDynamicImageHtml(product.image, product.name, 'catalog__card--pic')}
         </div>
         <div class="catalog__card--content">
             <h3 class="catalog__card--title">${product.name}</h3>
             <p class="catalog__card--description">${product.description}</p>
-            <h3 class="catalog__card--price">${product.price}</h3>
+            <h3 class="catalog__card--price">\$${product.price.toFixed(2)}</h3>
         </div>
     `;
     return card;
 }
+
 
 /**
  * Рассчитать, сколько товаров помещается в 2 строки на основе текущей ширины экрана.
@@ -37,6 +46,7 @@ function getPortionSizeByScreenWidth() {
     if (width > 480) return 4;
     return 2;
 }
+
 
 /**
  * Отобразить товары выбранной категории с учетом текущего лимита строк.
@@ -64,29 +74,34 @@ function renderProducts() {
     container.replaceChildren(...cards);
 }
 
+
 /**
- * Получить товары категории.
+ * Получить товары категории из глобального хранилища store.
  *
- * @param {string} category - Категория товаров.
- * @returns {object[]} Товары категории.
+ * @param {string} category - Категория товаров (из ProductCategory).
+ * @returns {Product[]} Отфильтрованные доменные модели товаров.
  */
 function getProductsByCategory(category) {
-    return products.filter(
+    return store.products.filter(
         product => product.category === category
             && !product.isFavorite
+            && product.isAvailable
     );
 }
 
 /**
  * Инициализировать каталог.
  */
-function initCatalog() {
+export function initCatalog() {
     const buttons = document.querySelectorAll('.catalog__btn-category');
     const refreshBtn = document.querySelector('.catalog__refresh-btn');
 
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            currentCategory = button.dataset.category;
+            const buttonCategory = button.dataset.category;
+            currentCategory = ProductCategory[buttonCategory.toUpperCase()]
+                || buttonCategory;
+
             displayMultiplier = 1;
 
             renderProducts();
@@ -110,5 +125,3 @@ function initCatalog() {
 
     renderProducts();
 }
-
-initCatalog();

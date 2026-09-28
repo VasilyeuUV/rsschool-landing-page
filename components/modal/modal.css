@@ -1,0 +1,313 @@
+/* Базовое скрытое состояние оверлея */
+.modal__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--color-backdrop, rgba(64, 63, 61, 0.80));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    padding: 20px;
+}
+
+/* Окно модалки (Десктопное состояние) */
+.modal__window {
+    width: 800px;
+    max-width: 100%;
+    height: auto;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    border-radius: 40px;
+    background: var(--background-color-body, #E1D4C9);
+    padding: 16px;
+    display: flex;
+    transform: scale(0.85);
+    transition: transform 0.4s ease, max-width 0.3s ease;
+}
+
+/* Класс для открытия */
+.modal__overlay.modal--active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Класс для увеличения окна */
+.modal__overlay.modal--active .modal__window {
+    transform: scale(1);
+}
+
+/* Стили элементов внутри модалки */
+.modal__product {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    align-items: flex-start;
+}
+
+
+
+/* =========================================================
+   IMAGES & CONTENT BLOCKS
+   ========================================================= */
+
+.modal__product-imageblock {
+    flex: 0 0 310px;
+    width: 310px;
+    height: 310px;
+    border-radius: 35px;
+    overflow: hidden;
+}
+
+.product__pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal__product-content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 0;
+}
+
+.offer__card-description {
+    margin-bottom: 9px;
+    margin-top: -4px;
+}
+
+
+
+/* =========================================================
+   MODAL BUTTONS STYLES
+   ========================================================= */
+
+.product__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+
+/* Стили oval-кнопок */
+.modal__button {
+    height: 46px;
+    border-radius: 100px;
+    gap: 8px;
+    opacity: 1;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--border-color-light, #C1B6AD);
+    color: var(--text-color-primary, #403F3D);
+    background: transparent;
+    cursor: pointer;
+    font: var(--font-button);
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* для кнопок Size */
+.product__size-buttons .modal__button {
+    width: 116px;
+    justify-content: flex-start;
+}
+
+/* Для кнопок добавок */
+.product__additives-buttons .modal__button {
+    padding-right: 17px;
+}
+
+/* Ховер и подсветка выделеннойткнопки */
+.modal__button:hover {
+    box-shadow: 0 0 12px 1px rgba(102, 95, 85, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Активное состояние */
+.modal__button.btn--active {
+    background: var(--Background-modalControl, #665F55);
+    border-color: var(--Background-modalControl, #665F55);
+    color: var(--text-color-inverse, #E1D4C9);
+}
+
+/* Ховер неактивной кнопки */
+.modal__button:not(.btn--active):hover {
+    background: var(--Background-modalControl, #665F55);
+    border-color: var(--Background-modalControl, #665F55);
+    color: var(--text-color-inverse, #E1D4C9);
+}
+
+/* Сбрасываем подъем, если мышку убрали */
+.modal__button {
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* =========================================================
+   КРУЖОК И БУКВА/ЦИФРА ВНУТРИ (FIGMA SPECS)
+   ========================================================= */
+
+.modal__text-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    opacity: 1;
+    background: var(--color-border-light, #C1B6AD);
+    color: var(--text-color-primary, #403F3D);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+/* Изменение кружка при ховере и для выделенной кнопки */
+.modal__button.btn--active .modal__text-circle,
+.modal__button:hover .modal__text-circle {
+    background: #E1D4C9;
+    color: var(--text-color-inverse-dark, #403F3D);
+}
+
+
+
+
+
+.product__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -3px;
+}
+
+.modal__hr {
+    border-top: 1px solid var(--border-color-light);
+    margin: 5px 0;
+}
+
+.product__info {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font: var(--font-body-caption, 600 10px/140% 'Inter');
+    color: var(--text-color-primary, #403F3D);
+    margin-top: -12px;
+    margin-bottom: 20px;
+}
+
+.product__info-message {
+    margin-bottom: 0;
+}
+
+/* Значок информации */
+.product__info-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: inherit;
+}
+
+.modal__close {
+    height: 44px;
+    border: 1px solid var(--border-color-dark);
+    border-radius: 100px;
+    background: transparent;
+    cursor: pointer;
+    font: var(--font-button);
+    transition: all 0.3s ease;
+}
+
+.modal__close:hover {
+    background: var(--color-dark);
+    color: var(--color-light);
+}
+
+
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+/* Адаптация для экранов планшетов (768px) и мобильных устройств */
+@media (max-width: 768px) {
+    .modal__window {
+        max-width: 688px;
+        height: auto;
+        border-radius: 38px;
+    }
+
+    .modal__product-imageblock {
+        flex: 0 0 auto;
+        width: 46.9%;
+        max-width: 340px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+
+    }
+
+    .modal__product-imageblock .product__pic {
+        transform: scale(1.1);
+        transform-origin: center center;
+        transition: transform 0.3s ease;
+    }
+}
+
+
+/* Адаптация для экранов смартфонов (380px) */
+@media (max-width: 380px) {
+    .modal__product-imageblock {
+        display: none !important;
+    }
+}
+
+
+
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+[data-theme="dark"] {
+    .modal__overlay {
+        background: var(--dark-bg-overlay, #292826CC);
+    }
+
+    .modal__window {
+        background: var(--dark-bg-modal, #403F3D);
+    }
+
+    .modal__close {
+        color: var(--dark-text-primary, #E1D4C9);
+    }
+
+    .modal__text-circle {
+        background: var(--dark-border-primary, #665F55);
+        color: var(--text-color-primary, #403F3D);
+    }
+}
