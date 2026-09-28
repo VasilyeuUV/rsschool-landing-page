@@ -107,9 +107,9 @@
     opacity: 1;
     display: inline-flex;
     align-items: center;
-    background: transparent;
     border: 1px solid var(--border-color-light, #C1B6AD);
     color: var(--text-color-primary, #403F3D);
+    background: transparent;
     cursor: pointer;
     font: var(--font-button);
     transition:
@@ -283,5 +283,31 @@
 @media (max-width: 380px) {
     .modal__product-imageblock {
         display: none !important;
+    }
+}
+
+
+
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+[data-theme="dark"] {
+    .modal__overlay {
+        background: var(--dark-bg-overlay, #292826CC);
+    }
+
+    .modal__window {
+        background: var(--dark-bg-modal, #403F3D);
+    }
+
+    .modal__close {
+        color: var(--dark-text-primary, #E1D4C9);
+    }
+
+    .modal__text-circle {
+        background: var(--dark-border-primary, #665F55);
+        color: var(--text-color-primary, #403F3D);
     }
 }
