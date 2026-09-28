@@ -1,4 +1,4 @@
-import { ProductCategory } from '../constants/ProductCategory.js';
+import { ProductCategory } from '../constants/productCategory.js';
 
 /**
  * Класс для продуктов.
