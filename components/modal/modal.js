@@ -156,7 +156,7 @@ function buildModalLayoutHtml(product) {
             ${buildImageBlockHtml(product)}
             <div class="modal__product-content">
                 <h3 class="product__title">${product.name}</h3>
-                <p class="offer__card-description product__description description">${product.description}</p>
+                <p class="description product__description offer__card-description">${product.description}</p>
                 
                 ${buildSizesBlockHtml(product.sizes)}
                 ${buildAdditivesBlockHtml(product.additives)}
@@ -239,7 +239,7 @@ function buildAdditivesBlockHtml(additives) {
 function buildTotalBlockHtml() {
     return `
         <div class="product__total">
-            <h3 class="product__total-title">${AppTexts.MODAL_TOTAL_TITLE}</h3>
+            <h3 class="product__total-title">${AppTexts.MODAL_TOTAL_TITLE}:</h3>
             <h3 class="product__total-cost">$0.00</h3>
         </div>
     `;

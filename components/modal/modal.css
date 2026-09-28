@@ -13,21 +13,22 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease, visibility 0.4s ease;
+    padding: 20px;
 }
 
-/* Скрытое состояние окна */
+/* Окно модалки (Десктопное состояние) */
 .modal__window {
     width: 800px;
-    max-width: 90%;
+    max-width: 100%;
     height: auto;
-    max-height: 90vh;
+    max-height: calc(100vh - 40px);
     overflow-y: auto;
     border-radius: 40px;
-    background: var(--background-color-body);
+    background: var(--background-color-body, #E1D4C9);
     padding: 16px;
     display: flex;
     transform: scale(0.85);
-    transition: transform 0.4s ease;
+    transition: transform 0.4s ease, max-width 0.3s ease;
 }
 
 /* Класс для открытия */
@@ -44,16 +45,24 @@
 /* Стили элементов внутри модалки */
 .modal__product {
     display: flex;
+    flex-direction: row;
     gap: 20px;
     width: 100%;
+    align-items: flex-start; 
 }
 
+
+
+/* =========================================================
+   IMAGES & CONTENT BLOCKS
+   ========================================================= */
+
 .modal__product-imageblock {
-    flex: 1;
-    border-radius: 20px;
-    overflow: hidden;
-    max-width: 310px;
+    flex: 0 0 310px;
+    width: 310px;
     height: 310px;
+    border-radius: 35px;
+    overflow: hidden;
 }
 
 .product__pic {
@@ -63,17 +72,16 @@
 }
 
 .modal__product-content {
-    flex: 1.2;
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    min-width: 0;
 }
 
-.product__buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 8px;
+.offer__card-description {
+    margin-bottom: 9px;
+    margin-top: -4px;
 }
 
 
@@ -82,13 +90,21 @@
    MODAL BUTTONS STYLES
    ========================================================= */
 
+.product__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+
 /* Стили oval-кнопок */
 .modal__button {
     height: 46px;
     border-radius: 100px;
     gap: 8px;
     opacity: 1;
-    padding: 8px, 16px, 8px, 8px;
     display: inline-flex;
     align-items: center;
     background: transparent;
@@ -96,19 +112,23 @@
     color: var(--text-color-primary, #403F3D);
     cursor: pointer;
     font: var(--font-button);
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
 }
 
 /* для кнопок Size */
 .product__size-buttons .modal__button {
     width: 116px;
     justify-content: flex-start;
-    /* Кружок слева, текст следует за ним */
 }
 
 /* Для кнопок добавок */
 .product__additives-buttons .modal__button {
-    min-width: 116px;
+    padding-right: 17px;
 }
 
 /* 🔥 ХОВЕР + ПОДСВЕТКА ДЛЯ ВЫДЕЛЕННОЙ КНОПКИ (как договаривались ранее) */
@@ -174,7 +194,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto;
+    margin-top: -3px;
 }
 
 .modal__hr {
@@ -183,11 +203,17 @@
 }
 
 .product__info {
-display: flex;
+    display: flex;
     align-items: flex-start;
     gap: 8px;
     font: var(--font-body-caption, 600 10px/140% 'Inter');
     color: var(--text-color-primary, #403F3D);
+    margin-top: -12px;
+    margin-bottom: 20px;
+}
+
+.product__info-message{
+    margin-bottom: 0;
 }
 
 /* Значок информации */
@@ -221,17 +247,80 @@ display: flex;
    RESPONSIVE
    ========================================================= */
 
+/* Адаптация для экранов планшетов (768px) и мобильных устройств */
 @media (max-width: 768px) {
     .modal__window {
-        width: 440px;
+        max-width: 688px;
+        height: auto;
+        border-radius: 40px;
+    }
+
+    .modal__product {
+        flex-direction: row;
+        gap: 0;
+        align-items: flex-start;
+    }
+
+    /* 🔥 Левая колонка */
+    .modal__product-imageblock {
+        flex: 0 1 340px;
+        width: 340px;
+        height: 340px;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 20px;
+    }
+
+    /* Правая колонка: Информация */
+    .modal__product-content {
+        flex: 1 1 346px;
+        max-width: 346px;
+        min-width: 0;
+        padding-left: 20px;
+        gap: 20px;
+    }
+}
+
+
+/* Адаптация для экранов смартфонов (380px) */
+@media (max-width: 380px) {
+    .modal__window {
+        max-width: 342px;
+        width: 100%;
+        height: auto;
+        max-height: calc(100vh - 24px);
         padding: 16px;
+        border-radius: 40px;
+        background: #E1D4C9;
     }
 
     .modal__product {
         flex-direction: column;
+        gap: 0;
+        width: 100%;
     }
 
     .modal__product-imageblock {
-        display: none;
+        display: none !important;
+    }
+
+    /* Правая колонка */
+    .modal__product-content {
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 100%;
+        padding-left: 0;
+        gap: 20px;
+    }
+
+    /* Кнопки */
+    .product__buttons {
+        gap: 8px 6px;
+    }
+
+    /* Кнопка закрытия Close */
+    .modal__close {
+        width: 100%;
+        margin-top: 5px;
     }
 }
