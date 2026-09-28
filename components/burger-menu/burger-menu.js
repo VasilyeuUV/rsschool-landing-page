@@ -99,8 +99,12 @@ function openMenu() {
 
     button.setAttribute('aria-expanded', 'true');
     button.setAttribute('aria-label', 'Close menu');
-
     panel.setAttribute('aria-hidden', 'false');
+
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
+    document.body.style.overflow = 'hidden';
 
     document.body.classList.add('menu-open');
 }
@@ -119,8 +123,10 @@ function closeMenu() {
 
     button.setAttribute('aria-expanded', 'false');
     button.setAttribute('aria-label', 'Open menu');
-
     panel.setAttribute('aria-hidden', 'true');
+
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
 
     document.body.classList.remove('menu-open');
 }
@@ -173,11 +179,27 @@ function initializeBurgerMenu() {
     panel = document.querySelector('.burger-menu__panel');
     list = document.querySelector('.burger-menu__list');
 
+    if (!button
+        || !panel
+        || !list)
+        return;
+
     renderNavigation();
 
     button.addEventListener('click', toggleMenu);
     list.addEventListener('click', handleNavigationClick);
     document.addEventListener('keydown', handleKeyDown);
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+            if (isOpen) {
+                closeMenu();
+                console.log('Бургер-меню автоматически закрыто при переходе на десктоп.');
+            }
+        }
+    });
 }
 
 
